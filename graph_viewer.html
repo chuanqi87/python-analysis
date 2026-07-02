@@ -29,6 +29,7 @@
   .stat-box .num { font-size: 18px; font-weight: 600; color: #fff; }
   .stat-box .lbl { font-size: 10.5px; color: #9aa0a6; margin-top: 2px; }
   .stat-box.warn .num { color: #f28e2b; }
+  .stat-box.good .num { color: #59a14f; }
 
   .legend-item { display: flex; align-items: center; gap: 7px; font-size: 12px; padding: 3px 2px; cursor: pointer; border-radius: 4px; }
   .legend-item:hover { background: #24262b; }
@@ -41,6 +42,7 @@
   .toolbtn:hover { background: #2f333a; }
   .toolbtn.active { background: #2a5fd0; border-color: #2a5fd0; color: #fff; }
   .toolbtn.warnbtn.active { background: #b03a3a; border-color: #b03a3a; }
+  .toolbtn.okbtn.active { background: #2f8f4e; border-color: #2f8f4e; }
   label.chk { font-size: 12px; display: flex; align-items: center; gap: 6px; margin: 6px 0; color: #cfd3d8; cursor: pointer; }
 
   #detailFloat {
@@ -70,6 +72,9 @@
   #detail .evid { color: #b7bbc1; font-size: 11.5px; }
 
   .vbadge { display: inline-block; color: #fff; font-size: 10.5px; padding: 1px 7px; border-radius: 9px; white-space: nowrap; margin: 2px 4px 2px 0; }
+  .harmony-badge { display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 9px; margin-left: 6px; font-weight: 600; white-space: nowrap; }
+  .harmony-badge.yes { background: #e4f5e9; color: #1e7d3c; }
+  .harmony-badge.no { background: #eee; color: #999; }
 
   #graphWrap { flex: 1; height: 100vh; position: relative; background: #f7f8fa; }
   #graph { position: absolute; inset: 0; }
@@ -111,6 +116,11 @@
   #detail .note { margin: 4px 0 8px; padding: 8px 9px; background: #2b2308; border-left: 3px solid #cf9e00; border-radius: 4px; color: #e8dcae; font-size: 11.5px; }
   #detail .links a { color: #5b9dff; text-decoration: none; margin-right: 10px; }
   #detail .links a:hover { text-decoration: underline; }
+
+  #detail .harmony-block { margin: 4px 0 8px; padding: 8px 9px; border-radius: 4px; border-left: 3px solid #59a14f; background: #14231a; color: #cdeedd; }
+  #detail .harmony-block.no { border-left-color: #6b7076; background: #1e2023; color: #b7bbc1; }
+  #detail .harmony-block .title { font-weight: 600; margin-bottom: 4px; }
+  #detail .src-tag { display: inline-block; background: #1f3a28; color: #8fd6ac; border-radius: 4px; padding: 1px 6px; margin: 2px 4px 0 0; font-size: 11px; }
 </style>
 </head>
 <body>
@@ -130,6 +140,8 @@
     <div class="stat-box"><div class="num" id="statTrans">-</div><div class="lbl">传递依赖</div></div>
     <div class="stat-box warn"><div class="num" id="statAdapt">-</div><div class="lbl">根库需适配</div></div>
     <div class="stat-box warn"><div class="num" id="statUnresolved">-</div><div class="lbl">根库未解析</div></div>
+    <div class="stat-box good"><div class="num" id="statHarmonyAdapted">-</div><div class="lbl">已鸿蒙化</div></div>
+    <div class="stat-box"><div class="num" id="statHarmonyNot">-</div><div class="lbl">未鸿蒙化</div></div>
   </div>
 
   <h2>视图</h2>
@@ -138,6 +150,7 @@
     <span class="toolbtn" id="btnPhysics">物理引擎: 开</span>
     <span class="toolbtn" id="btnRootsOnly">仅看根库</span>
     <span class="toolbtn warnbtn" id="btnAdaptOnly">仅看需适配</span>
+    <span class="toolbtn okbtn" id="btnHarmonyOnly">✅ 仅看已鸿蒙化</span>
   </div>
   <label class="chk"><input type="checkbox" id="chkHideIsolated"> 隐藏被筛掉分类后孤立的传递依赖</label>
 
@@ -147,6 +160,10 @@
   <h2>按平台适配结论筛选（点击切换）</h2>
   <div class="legend-sub">边框颜色 = 适配风险等级，与图中节点边框对应</div>
   <div id="verdictLegend"></div>
+
+  <h2>按鸿蒙化状态筛选（点击切换）</h2>
+  <div class="legend-sub">✅ = 已在 HarmonyOS PyPI 源中可直接安装；标签前缀与该图例对应</div>
+  <div id="harmonyLegend"></div>
 </div>
 
 <div id="graphWrap">
@@ -205,12 +222,23 @@ const VERDICT_META = {
 };
 const VERDICT_ORDER = ['native_compiled','os_specific_api','platform_branching','optional_native_build','unresolved','cross_platform'];
 
+const HARMONY_META = {
+  adapted:     { label: '已鸿蒙化', color: '#59a14f' },
+  not_adapted: { label: '未鸿蒙化', color: '#9aa0a6' },
+};
+const HARMONY_SOURCE_LABELS = {
+  support_list: 'support_list.md（静态清单）',
+  cnb_registry: 'cnb.cool 实时注册表（权威）',
+};
+
 let allNodes, allEdges, network, nodesDS, edgesDS;
 let catColor = {};
 let disabledCats = new Set();
 let disabledVerdicts = new Set();
+let disabledHarmony = new Set();
 let rootsOnlyMode = false;
 let adaptOnlyMode = false;
+let harmonyOnlyMode = false;
 let physicsOn = true;
 let listSearchText = '';
 let depFilterMode = 'all';
@@ -232,8 +260,12 @@ Promise.all([
   fetch('libraries_categorized.json').then(res => {
     if (!res.ok) throw new Error(`libraries_categorized.json HTTP ${res.status}`);
     return res.json();
+  }),
+  fetch('harmony_adaptation_status.json').then(res => {
+    if (!res.ok) throw new Error(`harmony_adaptation_status.json HTTP ${res.status}`);
+    return res.json();
   })
-]).then(([graphData, platformData, libData]) => init(graphData, platformData, libData))
+]).then(([graphData, platformData, libData, harmonyData]) => init(graphData, platformData, libData, harmonyData))
   .catch(err => {
     document.getElementById('loading').textContent = '加载数据失败: ' + err;
     console.error(err);
@@ -241,6 +273,10 @@ Promise.all([
 
 function verdictOf(n) {
   return (n.platform && n.platform.verdict) || 'cross_platform';
+}
+
+function harmonyStatusOf(n) {
+  return (n.harmony && n.harmony.harmony_adapted) ? 'adapted' : 'not_adapted';
 }
 
 function escapeHtml(str) {
