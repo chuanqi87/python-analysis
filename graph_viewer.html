@@ -140,8 +140,8 @@
     <div class="stat-box"><div class="num" id="statTrans">-</div><div class="lbl">传递依赖</div></div>
     <div class="stat-box warn"><div class="num" id="statAdapt">-</div><div class="lbl">根库需适配</div></div>
     <div class="stat-box warn"><div class="num" id="statUnresolved">-</div><div class="lbl">根库未解析</div></div>
+    <div class="stat-box warn"><div class="num" id="statHarmonyNot">-</div><div class="lbl">未鸿蒙化</div></div>
     <div class="stat-box good"><div class="num" id="statHarmonyAdapted">-</div><div class="lbl">已鸿蒙化</div></div>
-    <div class="stat-box"><div class="num" id="statHarmonyNot">-</div><div class="lbl">未鸿蒙化</div></div>
   </div>
 
   <h2>视图</h2>
@@ -150,7 +150,7 @@
     <span class="toolbtn" id="btnPhysics">物理引擎: 开</span>
     <span class="toolbtn" id="btnRootsOnly">仅看根库</span>
     <span class="toolbtn warnbtn" id="btnAdaptOnly">仅看需适配</span>
-    <span class="toolbtn okbtn" id="btnHarmonyOnly">✅ 仅看已鸿蒙化</span>
+    <span class="toolbtn warnbtn" id="btnHarmonyOnly">❌ 仅看未鸿蒙化</span>
   </div>
   <label class="chk"><input type="checkbox" id="chkHideIsolated"> 隐藏被筛掉分类后孤立的传递依赖</label>
 
@@ -223,8 +223,8 @@ const VERDICT_META = {
 const VERDICT_ORDER = ['native_compiled','os_specific_api','platform_branching','optional_native_build','unresolved','cross_platform'];
 
 const HARMONY_META = {
+  not_adapted: { label: '未鸿蒙化', color: '#e15759' },
   adapted:     { label: '已鸿蒙化', color: '#59a14f' },
-  not_adapted: { label: '未鸿蒙化', color: '#9aa0a6' },
 };
 const HARMONY_SOURCE_LABELS = {
   support_list: 'support_list.md（静态清单）',
@@ -287,7 +287,7 @@ function normalizeName(s) {
   return String(s).toLowerCase().replace(/[-_.]+/g, '-');
 }
 
-function init(graphData, platformData, libData) {
+function init(graphData, platformData, libData, harmonyData) {
   VERDICT_LABELS_FULL = platformData.meta.verdict_labels || {};
   const platformMap = {};
   platformData.results.forEach(r => { platformMap[r.name] = r; });
@@ -297,11 +297,15 @@ function init(graphData, platformData, libData) {
     c.libraries.forEach(lib => { libMap[normalizeName(lib.name)] = lib; });
   });
 
+  const harmonyMap = {};
+  (harmonyData.results || []).forEach(r => { harmonyMap[r.name] = r; });
+
   allNodes = graphData.nodes;
   allEdges = graphData.edges;
   allNodes.forEach(n => {
     n.platform = platformMap[n.name] || null;
     n.lib = libMap[normalizeName(n.name)] || null;
+    n.harmony = harmonyMap[n.name] || null;
   });
 
   const cats = [...new Set(allNodes.filter(n => n.category).map(n => n.category))].sort();
@@ -317,9 +321,12 @@ function init(graphData, platformData, libData) {
   document.getElementById('statTrans').textContent = allNodes.filter(n => !n.is_root).length;
   document.getElementById('statAdapt').textContent = rootNodes.filter(n => verdictOf(n) !== 'cross_platform' && verdictOf(n) !== 'unresolved').length;
   document.getElementById('statUnresolved').textContent = rootNodes.filter(n => verdictOf(n) === 'unresolved').length;
+  document.getElementById('statHarmonyAdapted').textContent = allNodes.filter(n => harmonyStatusOf(n) === 'adapted').length;
+  document.getElementById('statHarmonyNot').textContent = allNodes.filter(n => harmonyStatusOf(n) === 'not_adapted').length;
 
   buildLegend(cats);
   buildVerdictLegend(rootNodes);
+  buildHarmonyLegend(allNodes);
 
   const inDegAll = {};
   allEdges.forEach(e => inDegAll[e.to] = (inDegAll[e.to] || 0) + 1);
@@ -335,7 +342,7 @@ function init(graphData, platformData, libData) {
 
     const nodeObj = {
       id: n.name,
-      label: n.name,
+      label: (harmonyStatusOf(n) === 'adapted' ? '✅ ' : '') + n.name,
       value: Math.max(4, (n.is_root ? 10 : 4) + deg),
       color: {
         background: color,
@@ -402,6 +409,13 @@ function init(graphData, platformData, libData) {
     syncVerdictLegendUI();
     applyFilter();
   };
+  document.getElementById('btnHarmonyOnly').onclick = e => {
+    harmonyOnlyMode = !harmonyOnlyMode;
+    e.target.classList.toggle('active', harmonyOnlyMode);
+    disabledHarmony = harmonyOnlyMode ? new Set(['adapted']) : new Set();
+    syncHarmonyLegendUI();
+    applyFilter();
+  };
   document.getElementById('chkHideIsolated').onchange = applyFilter;
 
   document.getElementById('detailCloseBtn').onclick = () => {
@@ -453,6 +467,10 @@ function init(graphData, platformData, libData) {
     }
   });
 
+  harmonyOnlyMode = true;
+  document.getElementById('btnHarmonyOnly').classList.add('active');
+  disabledHarmony = new Set(['adapted']);
+  syncHarmonyLegendUI();
   applyFilter();
 }
 
@@ -462,6 +480,9 @@ function tooltipFor(n, deg) {
   if (n.category) lines.push('分类: ' + n.category);
   lines.push(n.is_root ? '类型: 清单根库' : '类型: 传递依赖');
   lines.push('被依赖次数: ' + deg);
+  const hStatus = harmonyStatusOf(n);
+  lines.push('鸿蒙化状态: ' + HARMONY_META[hStatus].label +
+    (n.harmony && n.harmony.sources && n.harmony.sources.length ? ' (' + n.harmony.sources.map(s => HARMONY_SOURCE_LABELS[s] || s).join(' + ') + ')' : ''));
   const verdict = verdictOf(n);
   lines.push('平台结论: ' + VERDICT_META[verdict].label);
   if (n.platform && n.platform.flags && n.platform.flags.length > 1) {
@@ -522,6 +543,36 @@ function syncVerdictLegendUI() {
   document.getElementById('btnAdaptOnly').classList.toggle('active', isAdaptOnly);
 }
 
+function buildHarmonyLegend(nodes) {
+  const el = document.getElementById('harmonyLegend');
+  const counts = { adapted: 0, not_adapted: 0 };
+  nodes.forEach(n => { counts[harmonyStatusOf(n)]++; });
+
+  ['not_adapted', 'adapted'].forEach(status => {
+    const hm = HARMONY_META[status];
+    const item = document.createElement('div');
+    item.className = 'legend-item';
+    item.dataset.harmony = status;
+    item.innerHTML = `<span class="swatch" style="background:${hm.color}"></span><span>${status === 'adapted' ? '✅ ' : '❌ '}${hm.label} (${counts[status]})</span>`;
+    item.onclick = () => {
+      if (disabledHarmony.has(status)) disabledHarmony.delete(status); else disabledHarmony.add(status);
+      item.classList.toggle('disabled', disabledHarmony.has(status));
+      syncHarmonyLegendUI();
+      applyFilter();
+    };
+    el.appendChild(item);
+  });
+}
+
+function syncHarmonyLegendUI() {
+  document.querySelectorAll('#harmonyLegend .legend-item').forEach(item => {
+    item.classList.toggle('disabled', disabledHarmony.has(item.dataset.harmony));
+  });
+  const isHarmonyOnly = disabledHarmony.size === 1 && disabledHarmony.has('adapted');
+  harmonyOnlyMode = isHarmonyOnly;
+  document.getElementById('btnHarmonyOnly').classList.toggle('active', isHarmonyOnly);
+}
+
 function applyFilter() {
   const hideIsolated = document.getElementById('chkHideIsolated').checked;
   const inDeg = {}, outDeg = {};
@@ -546,6 +597,7 @@ function applyFilter() {
   function rootHidden(n) {
     if (disabledCats.has(n.category)) return true;
     if (disabledVerdicts.has(verdictOf(n))) return true;
+    if (disabledHarmony.has(harmonyStatusOf(n))) return true;
     if (searchText && !n.name.toLowerCase().includes(searchText)) return true;
     if (!passesDepFilter(n.name)) return true;
     return false;
@@ -559,6 +611,7 @@ function applyFilter() {
     if (n.is_root) return !visibleRootNames.has(n.name);
     if (rootsOnlyMode) return true;
     if (disabledVerdicts.has(verdictOf(n))) return true;
+    if (disabledHarmony.has(harmonyStatusOf(n))) return true;
     if (searchText && !n.name.toLowerCase().includes(searchText)) return true;
     if (!passesDepFilter(n.name)) return true;
     if (hideIsolated) {
@@ -604,10 +657,18 @@ function renderList(visibleNodeNames, inDeg, outDeg) {
     row.className = 'list-row';
     row.style.borderLeftColor = vm.order > 0 ? vm.color : 'transparent';
     row.dataset.id = n.name;
+    const hStatus = harmonyStatusOf(n);
+    const hm = HARMONY_META[hStatus];
+    const hTitle = n.harmony && n.harmony.sources && n.harmony.sources.length
+      ? n.harmony.sources.map(s => HARMONY_SOURCE_LABELS[s] || s).join(' + ')
+      : '两个数据源均未收录';
     row.innerHTML = `
       <div class="lr-top">
-        <span class="lr-name">${escapeHtml(n.name)}</span>
-        <span class="vbadge" style="background:${vm.color}" title="${escapeHtml(VERDICT_LABELS_FULL[verdict] || '')}">${vm.label}</span>
+        <span class="lr-name">${hStatus === 'adapted' ? '✅ ' : ''}${escapeHtml(n.name)}</span>
+        <span>
+          <span class="vbadge" style="background:${vm.color}" title="${escapeHtml(VERDICT_LABELS_FULL[verdict] || '')}">${vm.label}</span>
+          <span class="harmony-badge ${hStatus === 'adapted' ? 'yes' : 'no'}" title="${escapeHtml(hTitle)}">${hm.label}</span>
+        </span>
       </div>
       <div class="lr-bottom">
         <span class="cat-dot" style="background:${n.is_root ? (catColor[n.category] || '#ccc') : TRANSITIVE_COLOR}"></span>
@@ -686,6 +747,23 @@ function showDetail(id) {
     `;
   }
 
+  const hStatus = harmonyStatusOf(n);
+  const hm = HARMONY_META[hStatus];
+  const h = n.harmony;
+  const srcTags = (h && h.sources && h.sources.length)
+    ? h.sources.map(s => {
+        const vers = (h.versions_by_source && h.versions_by_source[s]) || [];
+        const verStr = vers.length ? ` @ ${vers.join(', ')}` : '';
+        return `<span class="src-tag">${escapeHtml(HARMONY_SOURCE_LABELS[s] || s)}${escapeHtml(verStr)}</span>`;
+      }).join('')
+    : '<span class="empty">两个数据源均未收录，需人工确认</span>';
+  const harmonyHtml = `
+    <div class="harmony-block ${hStatus === 'adapted' ? '' : 'no'}">
+      <div class="title">${hStatus === 'adapted' ? '✅' : '❌'} 鸿蒙化状态：${hm.label}</div>
+      <div>${srcTags}</div>
+    </div>
+  `;
+
   const lib = n.lib;
   const descHtml = lib && lib.description ? `<div class="desc">${escapeHtml(lib.description)}</div>` : '';
   const noteHtml = lib && lib.note ? `<div class="note">⚠ ${escapeHtml(lib.note)}</div>` : '';
@@ -700,6 +778,7 @@ function showDetail(id) {
     <div class="row"><span class="k">类型：</span>${n.is_root ? '清单根库' : '传递依赖'}</div>
     <div class="row"><span class="k">分类：</span>${escapeHtml(n.category || '（无，属传递依赖）')}</div>
     <div class="row"><span class="k">解析状态：</span>${n.resolved === false ? '⚠ 未在 PyPI 找到' : '正常'}</div>
+    ${harmonyHtml}
     ${descHtml}
     ${noteHtml}
     ${linksHtml}
