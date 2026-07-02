@@ -1,0 +1,619 @@
+{
+  "categories": [
+    {
+      "category": "Jupyter / IPython 生态",
+      "libraries": [
+        {
+          "name": "backcall",
+          "source": "https://github.com/takluyver/backcall",
+          "pypi": "https://pypi.org/project/backcall/",
+          "description": "定义并强制回调函数签名规范的小工具，用于保证 IPython 等项目回调 API 的稳定性。"
+        },
+        {
+          "name": "entrypoints",
+          "source": "https://github.com/takluyver/entrypoints",
+          "pypi": "https://pypi.org/project/entrypoints/",
+          "description": "用于发现并加载已安装 Python 包中声明的入口点（entry points）的轻量级库。"
+        },
+        {
+          "name": "matplotlib-inline",
+          "source": "https://github.com/ipython/matplotlib-inline",
+          "pypi": "https://pypi.org/project/matplotlib-inline/",
+          "description": "为 Jupyter 环境提供 Matplotlib 内联（inline）绘图后端支持的库。"
+        },
+        {
+          "name": "nest-asyncio",
+          "source": "https://github.com/erdewit/nest_asyncio",
+          "pypi": "https://pypi.org/project/nest-asyncio/",
+          "description": "为 asyncio 打补丁使其支持嵌套事件循环，常用于 Jupyter 等已运行事件循环的环境中执行异步代码。"
+        },
+        {
+          "name": "pickleshare",
+          "source": "https://github.com/pickleshare/pickleshare",
+          "pypi": "https://pypi.org/project/pickleshare/",
+          "description": "一个类似 shelve 的小型键值数据库，支持并发访问，被 IPython 用于持久化历史记录等数据。"
+        },
+        {
+          "name": "prompt_toolkit",
+          "source": "https://github.com/prompt-toolkit/python-prompt-toolkit",
+          "pypi": "https://pypi.org/project/prompt_toolkit/",
+          "description": "用于构建功能强大的交互式命令行界面的 Python 库，支持语法高亮、自动补全等，是 IPython 等 REPL 的核心依赖。"
+        },
+        {
+          "name": "Pygments",
+          "source": "https://github.com/pygments/pygments",
+          "pypi": "https://pypi.org/project/Pygments/",
+          "description": "用纯 Python 编写的语法高亮库，支持数百种编程语言，广泛用于代码高亮展示。"
+        },
+        {
+          "name": "traitlets",
+          "source": "https://github.com/ipython/traitlets",
+          "pypi": "https://pypi.org/project/traitlets/",
+          "description": "Jupyter 生态的配置系统框架，提供带类型校验与事件通知的类属性（trait），用于统一管理各组件的配置项。"
+        },
+        {
+          "name": "wcwidth",
+          "source": "https://github.com/jquast/wcwidth",
+          "pypi": "https://pypi.org/project/wcwidth/",
+          "description": "用于计算 Unicode 字符串在终端中实际显示宽度的工具库，解决东亚宽字符等对齐问题。"
+        },
+        {
+          "name": "jedi",
+          "source": "https://github.com/davidhalter/jedi",
+          "pypi": "https://pypi.org/project/jedi/",
+          "description": "面向 Python 的自动补全与静态分析库，可用于编辑器/IDE 中实现代码补全、跳转定义等功能。"
+        },
+        {
+          "name": "parso",
+          "source": "https://github.com/davidhalter/parso",
+          "pypi": "https://pypi.org/project/parso/",
+          "description": "纯 Python 实现的 Python 语法解析器，支持容错解析并兼容多个 Python 版本，是 jedi 的底层依赖。"
+        },
+        {
+          "name": "ipython-genutils",
+          "source": "https://github.com/ipython/ipython_genutils",
+          "pypi": "https://pypi.org/project/ipython-genutils/",
+          "note": "官方标注为 vestigial（遗留）工具集，仅供 IPython/Jupyter 内部历史依赖使用",
+          "description": "IPython 早期版本遗留下来的历史工具函数集合，官方已标注为过时（vestigial），仅为兼容旧依赖保留。"
+        },
+        {
+          "name": "ipywidgets",
+          "source": "https://github.com/jupyter-widgets/ipywidgets",
+          "pypi": "https://pypi.org/project/ipywidgets/",
+          "description": "为 Jupyter Notebook/Lab 提供交互式 HTML 控件（滑块、按钮等）的库，用于构建交互式界面。"
+        },
+        {
+          "name": "widgetsnbextension",
+          "source": "https://github.com/jupyter-widgets/ipywidgets/tree/main/python/widgetsnbextension",
+          "pypi": "https://pypi.org/project/widgetsnbextension/",
+          "description": "ipywidgets 在经典 Jupyter Notebook 中的前端扩展，提供交互控件的渲染支持。"
+        },
+        {
+          "name": "jupyterlab-widgets",
+          "source": "https://github.com/jupyter-widgets/ipywidgets/tree/main/python/jupyterlab_widgets",
+          "pypi": "https://pypi.org/project/jupyterlab-widgets/",
+          "description": "ipywidgets 在 JupyterLab 中的前端扩展，为 JupyterLab 提供交互控件渲染支持。"
+        },
+        {
+          "name": "comm",
+          "source": "https://github.com/ipython/comm",
+          "pypi": "https://pypi.org/project/comm/",
+          "description": "Jupyter Comm 协议的 Python 实现，用于内核（如 ipykernel、xeus-python）与前端之间的双向通信。"
+        },
+        {
+          "name": "mistune",
+          "source": "https://github.com/lepture/mistune",
+          "pypi": "https://pypi.org/project/mistune/",
+          "description": "一个快速且功能丰富的 Markdown 解析器，支持插件与自定义渲染器，被 Jupyter 等项目用于渲染 Markdown 内容。"
+        },
+        {
+          "name": "asttokens",
+          "source": "https://github.com/gristlabs/asttokens",
+          "pypi": "https://pypi.org/project/asttokens/",
+          "description": "为 Python AST（抽象语法树）节点标注对应源码位置信息的库，便于代码分析与调试工具定位源代码。"
+        },
+        {
+          "name": "jupyter-client",
+          "source": "https://github.com/jupyter/jupyter_client",
+          "pypi": "https://pypi.org/project/jupyter-client/",
+          "description": "Jupyter 协议的客户端实现，负责与 Jupyter 内核（kernel）通信，是 Notebook/JupyterLab 等前端的基础组件。"
+        },
+        {
+          "name": "jupyter-core",
+          "source": "https://github.com/jupyter/jupyter_core",
+          "pypi": "https://pypi.org/project/jupyter-core/",
+          "description": "Jupyter 项目的核心基础包，定义了配置与数据目录等公共路径规范，被各 Jupyter 子项目依赖。"
+        },
+        {
+          "name": "ipympl",
+          "source": "https://github.com/matplotlib/ipympl",
+          "pypi": "https://pypi.org/project/ipympl/",
+          "description": "Matplotlib 的 Jupyter 扩展，让 Matplotlib 图表在 Notebook 中支持交互式缩放、平移等操作。"
+        }
+      ]
+    },
+    {
+      "category": "代码质量与开发工具",
+      "libraries": [
+        {
+          "name": "astunparse",
+          "source": "https://github.com/simonpercivall/astunparse",
+          "pypi": "https://pypi.org/project/astunparse/",
+          "description": "将 Python AST（抽象语法树）还原为可读源代码字符串的工具库。"
+        },
+        {
+          "name": "ast-compat",
+          "source": "https://github.com/python-compiler-tools/ast-compat",
+          "pypi": "https://pypi.org/project/ast-compat/",
+          "description": "提供跨 Python 版本兼容的 ast 标准库封装，屏蔽不同版本间 AST 接口的差异。"
+        },
+        {
+          "name": "autopep8",
+          "source": "https://github.com/hhatto/autopep8",
+          "pypi": "https://pypi.org/project/autopep8/",
+          "description": "自动将 Python 代码格式化为符合 PEP 8 风格指南的工具。"
+        },
+        {
+          "name": "pycodestyle",
+          "source": "https://github.com/PyCQA/pycodestyle",
+          "pypi": "https://pypi.org/project/pycodestyle/",
+          "description": "检查 Python 代码是否符合 PEP 8 风格规范的静态检查工具（原名 pep8）。"
+        },
+        {
+          "name": "pyflakes",
+          "source": "https://github.com/PyCQA/pyflakes",
+          "pypi": "https://pypi.org/project/pyflakes/",
+          "description": "对 Python 代码进行静态检查的工具，专注于检测未使用变量、未定义名称等逻辑错误，不做风格检查。"
+        },
+        {
+          "name": "pluggy",
+          "source": "https://github.com/pytest-dev/pluggy",
+          "pypi": "https://pypi.org/project/pluggy/",
+          "description": "pytest 背后的插件与钩子（hook）调用机制库，用于实现可扩展的插件系统。"
+        },
+        {
+          "name": "pytest",
+          "source": "https://github.com/pytest-dev/pytest",
+          "pypi": "https://pypi.org/project/pytest/",
+          "description": "简单而强大的 Python 测试框架，支持丰富的插件生态，是社区最主流的测试工具之一。"
+        },
+        {
+          "name": "iniconfig",
+          "source": "https://github.com/pytest-dev/iniconfig",
+          "pypi": "https://pypi.org/project/iniconfig/",
+          "description": "一个极简的 INI 配置文件解析库，被 pytest 等工具用于读取配置文件。"
+        },
+        {
+          "name": "setuptools-scm",
+          "source": "https://github.com/pypa/setuptools-scm/",
+          "pypi": "https://pypi.org/project/setuptools-scm/",
+          "description": "根据版本控制系统（如 Git）的标签自动管理 Python 包版本号的工具，避免手动维护版本号。"
+        },
+        {
+          "name": "allpairspy",
+          "source": "https://github.com/thombashi/allpairspy",
+          "pypi": "https://pypi.org/project/allpairspy/",
+          "description": "基于成对组合（pairwise/all-pairs）算法生成测试用例组合的工具，用于在保证覆盖率的同时缩减测试用例数量。"
+        },
+        {
+          "name": "python-jsonrpc-server",
+          "source": "https://github.com/palantir/python-jsonrpc-server",
+          "pypi": "https://pypi.org/project/python-jsonrpc-server/",
+          "description": "实现 JSON-RPC 2.0 协议的服务端库，常用于语言服务器等基于 RPC 通信的场景。"
+        },
+        {
+          "name": "python-language-server",
+          "source": "https://github.com/palantir/python-language-server",
+          "pypi": "https://pypi.org/project/python-language-server/",
+          "note": "该项目已归档/停止维护（最后发布于 2020 年 12 月），社区后续用 python-lsp-server 延续，但按要求不做替换",
+          "description": "实现语言服务器协议（LSP）的 Python 语言服务器，为编辑器提供代码补全、跳转等智能功能（项目已于 2020 年底停止维护并归档，社区后续以 python-lsp-server 延续）。"
+        },
+        {
+          "name": "pypkgpack",
+          "source": "https://github.com/Suzhou-Tongyuan/pypkgpack",
+          "pypi": "https://pypi.org/project/pypkgpack/",
+          "note": "PyPI 元数据未直接列出仓库链接，通过作者(thautwarm)及功能描述匹配确认",
+          "description": "将 Python 项目及其依赖打包成单一 Python 文件的工具，便于分发与部署。"
+        },
+        {
+          "name": "wisepy2",
+          "source": "https://github.com/Xython/wisepy2",
+          "pypi": "https://pypi.org/project/wisepy2/",
+          "description": "一个简单易用的命令行参数解析/CLI 构建框架。"
+        },
+        {
+          "name": "graphlib_backport",
+          "source": "https://github.com/mariushelf/graphlib_backport",
+          "pypi": "https://pypi.org/project/graphlib_backport/",
+          "description": "Python 3.9 标准库 graphlib（拓扑排序）模块向 Python 3.6+ 的向后移植版本。"
+        }
+      ]
+    },
+    {
+      "category": "异步与兼容性工具",
+      "libraries": [
+        {
+          "name": "async-timeout",
+          "source": "https://github.com/aio-libs/async-timeout",
+          "pypi": "https://pypi.org/project/async-timeout/",
+          "description": "为 asyncio 程序提供超时控制的上下文管理器工具。"
+        },
+        {
+          "name": "asynctest",
+          "source": "https://github.com/Martiusweb/asynctest/",
+          "pypi": "https://pypi.org/project/asynctest/",
+          "description": "在标准 unittest 基础上扩展，增加对 asyncio 异步代码测试支持的库。"
+        },
+        {
+          "name": "cached-property",
+          "source": "https://github.com/pydanny/cached-property",
+          "pypi": "https://pypi.org/project/cached-property/",
+          "description": "提供 @cached_property 装饰器，用于缓存类属性计算结果、避免重复计算的工具库。"
+        },
+        {
+          "name": "contextlib2",
+          "source": "https://github.com/jazzband/contextlib2",
+          "pypi": "https://pypi.org/project/contextlib2/",
+          "description": "对标准库 contextlib 模块的向后移植与功能增强。"
+        }
+      ]
+    },
+    {
+      "category": "科学计算与机器学习",
+      "libraries": [
+        {
+          "name": "autograd",
+          "source": "https://github.com/HIPS/autograd",
+          "pypi": "https://pypi.org/project/autograd/",
+          "description": "可高效计算 NumPy 代码梯度（自动微分）的库。"
+        },
+        {
+          "name": "autograd-gamma",
+          "source": "https://github.com/CamDavidsonPilon/autograd-gamma",
+          "pypi": "https://pypi.org/project/autograd-gamma/",
+          "description": "为 autograd 提供 Gamma 函数族（如 gammainc、beta 等）的可微分近似实现，供 lifelines 等生存分析库使用。"
+        },
+        {
+          "name": "cloudpickle",
+          "source": "https://github.com/cloudpipe/cloudpickle",
+          "pypi": "https://pypi.org/project/cloudpickle/",
+          "description": "扩展标准 pickle 功能的序列化库，支持对 lambda、闭包、动态定义的类等标准 pickle 无法处理的对象进行序列化，常用于分布式计算场景。"
+        },
+        {
+          "name": "jax",
+          "source": "https://github.com/jax-ml/jax",
+          "pypi": "https://pypi.org/project/jax/",
+          "description": "Google 出品的高性能数值计算库，支持对 NumPy 风格代码进行自动微分、即时编译（JIT）与硬件加速（GPU/TPU）。"
+        },
+        {
+          "name": "lifelines",
+          "source": "https://github.com/CamDavidsonPilon/lifelines",
+          "pypi": "https://pypi.org/project/lifelines/",
+          "description": "纯 Python 实现的生存分析（Survival Analysis）库，支持 Kaplan-Meier、Nelson-Aalen 估计及回归模型等。"
+        },
+        {
+          "name": "ml-collections",
+          "source": "https://github.com/google/ml_collections",
+          "pypi": "https://pypi.org/project/ml-collections/",
+          "description": "Google 提供的面向机器学习场景设计的配置字典集合库，便于管理实验超参数等配置。"
+        },
+        {
+          "name": "numexpr",
+          "source": "https://github.com/pydata/numexpr",
+          "pypi": "https://pypi.org/project/numexpr/",
+          "description": "针对 NumPy 数组表达式的快速数值计算引擎，通过避免中间临时数组和多线程来加速运算。"
+        },
+        {
+          "name": "absl-py",
+          "source": "https://github.com/abseil/abseil-py",
+          "pypi": "https://pypi.org/project/absl-py/",
+          "description": "Google Abseil 项目的 Python 通用库集合，提供命令行参数解析（flags）、日志、应用入口等基础设施，被 TensorFlow 等项目广泛使用。"
+        },
+        {
+          "name": "interface-meta",
+          "source": "https://github.com/matthewwardrop/interface_meta",
+          "pypi": "https://pypi.org/project/interface-meta/",
+          "description": "提供一种便捷方式来定义可扩展、带方法签名强制校验与统一文档的接口基类的库。"
+        },
+        {
+          "name": "easydict",
+          "source": "https://github.com/makinacorpus/easydict",
+          "pypi": "https://pypi.org/project/easydict/",
+          "description": "让字典可以像访问对象属性一样访问其键值（包括嵌套字典）的小工具库。"
+        },
+        {
+          "name": "toolz",
+          "source": "https://github.com/pytoolz/toolz",
+          "pypi": "https://pypi.org/project/toolz/",
+          "description": "提供函数式编程风格的列表/迭代器处理工具集，如 map、filter、reduce 等的增强实现。"
+        },
+        {
+          "name": "MiniSom",
+          "source": "https://github.com/JustGlowing/minisom",
+          "pypi": "https://pypi.org/project/MiniSom/",
+          "description": "自组织映射（Self-Organizing Map, SOM）算法的极简 Python 实现，用于聚类与降维可视化。"
+        },
+        {
+          "name": "hyperopt",
+          "source": "https://github.com/hyperopt/hyperopt",
+          "pypi": "https://pypi.org/project/hyperopt/",
+          "description": "支持分布式异步执行的超参数优化库，提供随机搜索、TPE 等优化算法。"
+        },
+        {
+          "name": "mindspore-hub",
+          "source": "https://github.com/mindspore-ai/hub",
+          "pypi": "https://pypi.org/project/mindspore-hub/",
+          "description": "华为 MindSpore 深度学习框架配套的预训练模型库/托管平台客户端，用于发现、加载和复用预训练模型（该包在 PyPI 上未提供公开元数据，此描述基于其 mindspore-ai/hub 源码仓库背景推断）。"
+        },
+        {
+          "name": "ultralytics",
+          "source": "https://github.com/ultralytics/ultralytics",
+          "pypi": "https://pypi.org/project/ultralytics/",
+          "description": "YOLO 系列目标检测框架的官方实现，支持目标检测、实例分割、姿态估计、图像分类等多种视觉任务的训练与推理。"
+        },
+        {
+          "name": "tf2onnx",
+          "source": "https://github.com/onnx/tensorflow-onnx",
+          "pypi": "https://pypi.org/project/tf2onnx/",
+          "description": "将 TensorFlow 模型转换为 ONNX 格式的转换工具，便于模型跨框架部署。"
+        }
+      ]
+    },
+    {
+      "category": "强化学习",
+      "libraries": [
+        {
+          "name": "gym",
+          "source": "https://github.com/openai/gym",
+          "pypi": "https://pypi.org/project/gym/",
+          "note": "已废弃，继任者为 gymnasium（列表中已单独收录）",
+          "description": "OpenAI 推出的强化学习环境标准接口库，提供统一 API 与多种参考环境（项目已废弃，由接口兼容的 Gymnasium 接续维护）。"
+        },
+        {
+          "name": "gym-notices",
+          "source": "https://github.com/Farama-Foundation/gym-notices",
+          "pypi": "https://pypi.org/project/gym-notices/",
+          "description": "为 gym 库弹出维护状态提示/迁移通知的辅助小包。"
+        },
+        {
+          "name": "gymnasium",
+          "source": "https://github.com/Farama-Foundation/Gymnasium",
+          "pypi": "https://pypi.org/project/gymnasium/",
+          "description": "Farama 基金会维护的强化学习环境标准 API 库，是 OpenAI Gym 的后继者，提供统一接口与丰富的参考环境集合。"
+        },
+        {
+          "name": "Farama-Notifications",
+          "source": "https://github.com/Farama-Foundation/Farama-Notifications",
+          "pypi": "https://pypi.org/project/Farama-Notifications/",
+          "description": "为 Farama 基金会旗下所有库（如 Gymnasium）统一提供版本/维护状态通知的工具包。"
+        },
+        {
+          "name": "jax-jumpy",
+          "source": "https://github.com/Farama-Foundation/Jumpy",
+          "pypi": "https://pypi.org/project/jax-jumpy/",
+          "description": "为 JAX 与 NumPy 提供统一后端接口的兼容层，使同一份代码可以在两者之间无缝切换。"
+        }
+      ]
+    },
+    {
+      "category": "Office 文档处理",
+      "libraries": [
+        {
+          "name": "bayoo-docx",
+          "source": "https://github.com/BayooG/bayooo-docx",
+          "pypi": "https://pypi.org/project/bayoo-docx/",
+          "description": "用于创建和编辑 Microsoft Word .docx 文件的 Python 库。"
+        },
+        {
+          "name": "docxcompose",
+          "source": "https://github.com/4teamwork/docxcompose",
+          "pypi": "https://pypi.org/project/docxcompose/",
+          "description": "用于合并、组合多个 .docx 文档的 Python 库。"
+        },
+        {
+          "name": "docxtpl",
+          "source": "https://github.com/elapouya/python-docx-template",
+          "pypi": "https://pypi.org/project/docxtpl/",
+          "description": "基于 Jinja2 模板引擎实现的 Word (.docx) 文档模板生成工具，可在模板中填充变量、循环、条件等生成最终文档。"
+        },
+        {
+          "name": "openpyxl",
+          "source": "https://foss.heptapod.net/openpyxl/openpyxl",
+          "pypi": "https://pypi.org/project/openpyxl/",
+          "note": "源码托管于 Heptapod（非 GitHub）",
+          "description": "用于读写 Excel 2010+ (.xlsx/.xlsm) 文件的 Python 库，支持公式、样式、图表等操作。"
+        }
+      ]
+    },
+    {
+      "category": "序列化与配置",
+      "libraries": [
+        {
+          "name": "ruamel.yaml",
+          "source": "https://sourceforge.net/p/ruamel-yaml/code/ci/default/tree/",
+          "pypi": "https://pypi.org/project/ruamel.yaml/",
+          "note": "源码托管于 SourceForge（非 GitHub）",
+          "description": "功能强大的 YAML 解析/生成库，支持往返（roundtrip）保留注释、流式/块状风格及键顺序等格式细节。"
+        },
+        {
+          "name": "ruamel-yaml-conda",
+          "source": null,
+          "pypi": "https://pypi.org/project/ruamel-yaml-conda/",
+          "note": "conda 镜像构建版本，与官方 ruamel.yaml 不同包；未找到独立源码仓库",
+          "description": "ruamel.yaml 面向 conda 打包体系发布的镜像版本，功能与 ruamel.yaml 相同但为独立发布包。"
+        },
+        {
+          "name": "conda",
+          "source": "https://github.com/conda/conda",
+          "pypi": "https://pypi.org/project/conda/",
+          "description": "跨平台、与操作系统无关的系统级二进制包与环境管理器，广泛用于 Python 科学计算环境管理。"
+        },
+        {
+          "name": "conda_package_streaming",
+          "source": "https://github.com/conda/conda-package-streaming",
+          "pypi": "https://pypi.org/project/conda_package_streaming/",
+          "description": "用于高效流式读取新旧格式（.conda 与 .tar.bz2）conda 软件包内容的库，无需完整解压即可访问包内文件。"
+        }
+      ]
+    },
+    {
+      "category": "GIS 与地图可视化",
+      "libraries": [
+        {
+          "name": "basemap-data",
+          "source": "https://github.com/matplotlib/basemap",
+          "pypi": "https://pypi.org/project/basemap-data/",
+          "description": "为 matplotlib basemap 制图工具包提供地图数据资源（海岸线、国界等）的数据包。"
+        },
+        {
+          "name": "folium",
+          "source": "https://github.com/python-visualization/folium",
+          "pypi": "https://pypi.org/project/folium/",
+          "description": "基于 Leaflet.js 的 Python 交互式地图可视化库，可将数据以美观的地图形式渲染展示。"
+        },
+        {
+          "name": "xyzservices",
+          "source": "https://github.com/geopandas/xyzservices",
+          "pypi": "https://pypi.org/project/xyzservices/",
+          "description": "提供各类 XYZ 瓦片地图服务（tile providers）来源信息的库，供 folium 等地图库调用。"
+        },
+        {
+          "name": "pyshp",
+          "source": "https://github.com/GeospatialPython/pyshp",
+          "pypi": "https://pypi.org/project/pyshp/",
+          "description": "纯 Python 实现的 ESRI Shapefile 格式读写库，无需依赖 GDAL 等外部库。"
+        },
+        {
+          "name": "canmatrix",
+          "source": "https://github.com/ebroecker/canmatrix",
+          "pypi": "https://pypi.org/project/canmatrix/",
+          "description": "用于描述和操作 CAN 总线通信矩阵（节点、报文帧、信号等）的库，支持 dbc/arxml/kcd/sym 等多种数据库格式间的转换与比较。"
+        }
+      ]
+    },
+    {
+      "category": "Windows 系统自动化",
+      "libraries": [
+        {
+          "name": "comtypes",
+          "source": "https://github.com/enthought/comtypes",
+          "pypi": "https://pypi.org/project/comtypes/",
+          "description": "纯 Python 实现的 COM（组件对象模型）支持库，用于在 Python 中调用和实现 Windows COM 组件。"
+        },
+        {
+          "name": "pynput",
+          "source": "https://github.com/moses-palmer/pynput",
+          "pypi": "https://pypi.org/project/pynput/",
+          "description": "用于监控和控制鼠标、键盘等用户输入设备的跨平台库。"
+        },
+        {
+          "name": "pywinauto",
+          "source": "https://github.com/pywinauto/pywinauto",
+          "pypi": "https://pypi.org/project/pywinauto/",
+          "description": "用于自动化操作 Windows 桌面应用程序 GUI 的 Python 模块集合，支持模拟点击、输入等操作。"
+        },
+        {
+          "name": "win-inet-pton",
+          "source": "https://github.com/hickeroar/win_inet_pton",
+          "pypi": "https://pypi.org/project/win-inet-pton/",
+          "description": "为 Windows 上缺失的 inet_pton/inet_ntop 函数提供基于 ctypes 的原生实现。"
+        },
+        {
+          "name": "win32-setctime",
+          "source": "https://github.com/Delgan/win32-setctime",
+          "pypi": "https://pypi.org/project/win32-setctime/",
+          "description": "用于在 Windows 上设置文件创建时间的小型实用工具库。"
+        }
+      ]
+    },
+    {
+      "category": "浏览器/进程自动化",
+      "libraries": [
+        {
+          "name": "pychrome",
+          "source": "https://github.com/fate0/pychrome",
+          "pypi": "https://pypi.org/project/pychrome/",
+          "description": "基于 Chrome DevTools Protocol 实现的 Python 库，用于自动化控制 Chrome/Chromium 浏览器。"
+        },
+        {
+          "name": "schedule",
+          "source": "https://github.com/dbader/schedule",
+          "pypi": "https://pypi.org/project/schedule/",
+          "description": "简单易用的人性化任务调度库，以类似日历的语法定义周期性任务。"
+        }
+      ]
+    },
+    {
+      "category": "Web 框架与 API",
+      "libraries": [
+        {
+          "name": "fastapi",
+          "source": "https://github.com/tiangolo/fastapi",
+          "pypi": "https://pypi.org/project/fastapi/",
+          "description": "基于 Python 类型提示、高性能的现代 Web API 框架，易学易用，内置自动生成交互式文档，适合快速构建生产级接口服务。"
+        }
+      ]
+    },
+    {
+      "category": "错误监控与运维",
+      "libraries": [
+        {
+          "name": "Sentry",
+          "source": "https://github.com/getsentry/sentry",
+          "pypi": "https://pypi.org/project/sentry/",
+          "note": "PyPI 上确有名为 sentry 的包，其描述内容照搬自 getsentry/sentry 的 README，但版本停留在 23.7.1，属于陈旧/非官方推荐的安装方式；官方自托管 Sentry 实际通过 Docker 部署，而非 pip install",
+          "description": "错误日志实时监控与聚合平台。PyPI 上的 sentry 包实际是旧版 getsentry/sentry 自托管服务端代码（版本停留在 23.7.1），属陈旧、非官方推荐的安装方式；官方自托管 Sentry 现通过 Docker 部署，应用侧错误上报应使用 sentry-sdk。"
+        }
+      ]
+    },
+    {
+      "category": "计算机视觉与图形",
+      "libraries": [
+        {
+          "name": "PyOpenGL",
+          "source": "https://github.com/mcfletch/pyopengl",
+          "pypi": "https://pypi.org/project/PyOpenGL/",
+          "description": "Python 的标准 OpenGL 绑定库，提供访问 OpenGL、GLU、GLUT 等图形 API 的接口，用于 3D 图形渲染。"
+        }
+      ]
+    },
+    {
+      "category": "其他工具类",
+      "libraries": [
+        {
+          "name": "pypickle",
+          "source": "https://github.com/erdogant/pypickle",
+          "pypi": "https://pypi.org/project/pypickle/",
+          "description": "用于将变量保存到 pickle 文件或从 pickle 文件加载变量的简单工具库。"
+        },
+        {
+          "name": "tyjuliacall",
+          "source": "https://github.com/Suzhou-Tongyuan/tyjuliacall",
+          "pypi": "https://pypi.org/project/tyjuliacall/",
+          "description": "苏州同元软控开发的 Python-Julia 互操作库，可在 Python 中直接调用 Julia 代码与生态。"
+        },
+        {
+          "name": "pqt-gcc",
+          "source": "https://github.com/earlephilhower/pico-quick-toolchain",
+          "pypi": null,
+          "note": "嵌入式 GCC 工具链（Raspberry Pi Pico），通过 Arduino Board Manager 分发，无对应 PyPI 包",
+          "description": "面向 Raspberry Pi Pico 等设备的嵌入式 GCC 工具链，通过 Arduino Board Manager 分发，并非真正的 PyPI 包（PyPI 上无对应条目）。"
+        },
+        {
+          "name": "tjc-common",
+          "source": null,
+          "pypi": "https://pypi.org/project/tjc-common/",
+          "note": "苏州同元 MWorks.Syslab 产品的内部支持模块，闭源，无公开源码仓库",
+          "description": "苏州同元 MWorks.Syslab 产品的内部支持模块，是 tyjuliacall 的配套依赖包，闭源私有，无公开文档说明具体实现。"
+        },
+        {
+          "name": "ecdf",
+          "source": "https://github.com/kongscn/ecdf",
+          "pypi": "https://pypi.org/project/ecdf/",
+          "note": "与统计学 ECDF 概念无关，是基于 pandas/echarts 的数据可视化小工具",
+          "description": "基于 pandas 与 ECharts 的 DataFrame 可视化小工具，与统计学中的经验累积分布函数（ECDF）概念无关。"
+        }
+      ]
+    }
+  ]
+}

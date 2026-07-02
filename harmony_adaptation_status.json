@@ -1,0 +1,3018 @@
+{
+  "source_repo": "https://gitcode.com/OpenHarmonyPCDeveloper/Python_Package_For_HarmonyOS",
+  "reference_file": "support_list.md",
+  "total": 320,
+  "adapted_count": 214,
+  "not_adapted_count": 106,
+  "results": [
+    {
+      "name": "absl-py",
+      "category": "科学计算与机器学习",
+      "is_root": true,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.4.0"
+      ]
+    },
+    {
+      "name": "allpairspy",
+      "category": "代码质量与开发工具",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.5.1",
+        "2.5.1"
+      ]
+    },
+    {
+      "name": "ast-compat",
+      "category": "代码质量与开发工具",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.12.0"
+      ]
+    },
+    {
+      "name": "asttokens",
+      "category": "Jupyter / IPython 生态",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "3.0.1"
+      ]
+    },
+    {
+      "name": "astunparse",
+      "category": "代码质量与开发工具",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.6.3"
+      ]
+    },
+    {
+      "name": "async-timeout",
+      "category": "异步与兼容性工具",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "5.0.1"
+      ]
+    },
+    {
+      "name": "asynctest",
+      "category": "异步与兼容性工具",
+      "is_root": true,
+      "verdict": "platform_branching",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "autograd",
+      "category": "科学计算与机器学习",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.8.0",
+        "1.8.0"
+      ]
+    },
+    {
+      "name": "autograd-gamma",
+      "category": "科学计算与机器学习",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.5.0"
+      ]
+    },
+    {
+      "name": "autopep8",
+      "category": "代码质量与开发工具",
+      "is_root": true,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.3.2"
+      ]
+    },
+    {
+      "name": "backcall",
+      "category": "Jupyter / IPython 生态",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.2.0"
+      ]
+    },
+    {
+      "name": "basemap-data",
+      "category": "GIS 与地图可视化",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.0.0"
+      ]
+    },
+    {
+      "name": "bayoo-docx",
+      "category": "Office 文档处理",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.2.20"
+      ]
+    },
+    {
+      "name": "cached-property",
+      "category": "异步与兼容性工具",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.0.1"
+      ]
+    },
+    {
+      "name": "canmatrix",
+      "category": "GIS 与地图可视化",
+      "is_root": true,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.2"
+      ]
+    },
+    {
+      "name": "cloudpickle",
+      "category": "科学计算与机器学习",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "3.1.2"
+      ]
+    },
+    {
+      "name": "comm",
+      "category": "Jupyter / IPython 生态",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.2.3"
+      ]
+    },
+    {
+      "name": "comtypes",
+      "category": "Windows 系统自动化",
+      "is_root": true,
+      "verdict": "os_specific_api",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "conda",
+      "category": "序列化与配置",
+      "is_root": true,
+      "verdict": "os_specific_api",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "conda-package-streaming",
+      "category": "序列化与配置",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.12.0"
+      ]
+    },
+    {
+      "name": "contextlib2",
+      "category": "异步与兼容性工具",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "21.6.0"
+      ]
+    },
+    {
+      "name": "docxcompose",
+      "category": "Office 文档处理",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.2.0"
+      ]
+    },
+    {
+      "name": "docxtpl",
+      "category": "Office 文档处理",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.20.2"
+      ]
+    },
+    {
+      "name": "easydict",
+      "category": "科学计算与机器学习",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.13"
+      ]
+    },
+    {
+      "name": "ecdf",
+      "category": "其他工具类",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.9.1"
+      ]
+    },
+    {
+      "name": "entrypoints",
+      "category": "Jupyter / IPython 生态",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.4"
+      ]
+    },
+    {
+      "name": "farama-notifications",
+      "category": "强化学习",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.0.6"
+      ]
+    },
+    {
+      "name": "fastapi",
+      "category": "Web 框架与 API",
+      "is_root": true,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.136.3"
+      ]
+    },
+    {
+      "name": "folium",
+      "category": "GIS 与地图可视化",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.20.0"
+      ]
+    },
+    {
+      "name": "graphlib-backport",
+      "category": "代码质量与开发工具",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.1.0"
+      ]
+    },
+    {
+      "name": "gym",
+      "category": "强化学习",
+      "is_root": true,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "(无版本号)"
+      ]
+    },
+    {
+      "name": "gym-notices",
+      "category": "强化学习",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.1.0"
+      ]
+    },
+    {
+      "name": "gymnasium",
+      "category": "强化学习",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.3.0"
+      ]
+    },
+    {
+      "name": "hyperopt",
+      "category": "科学计算与机器学习",
+      "is_root": true,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.2.7"
+      ]
+    },
+    {
+      "name": "iniconfig",
+      "category": "代码质量与开发工具",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.3.0"
+      ]
+    },
+    {
+      "name": "interface-meta",
+      "category": "科学计算与机器学习",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.0.1"
+      ]
+    },
+    {
+      "name": "ipympl",
+      "category": "Jupyter / IPython 生态",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.10.0"
+      ]
+    },
+    {
+      "name": "ipython-genutils",
+      "category": "Jupyter / IPython 生态",
+      "is_root": true,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.2.0"
+      ]
+    },
+    {
+      "name": "ipywidgets",
+      "category": "Jupyter / IPython 生态",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "8.1.8"
+      ]
+    },
+    {
+      "name": "jax",
+      "category": "科学计算与机器学习",
+      "is_root": true,
+      "verdict": "os_specific_api",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "jax-jumpy",
+      "category": "强化学习",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.2.1"
+      ]
+    },
+    {
+      "name": "jedi",
+      "category": "Jupyter / IPython 生态",
+      "is_root": true,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.17.2"
+      ]
+    },
+    {
+      "name": "jupyter-client",
+      "category": "Jupyter / IPython 生态",
+      "is_root": true,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "8.8.0"
+      ]
+    },
+    {
+      "name": "jupyter-core",
+      "category": "Jupyter / IPython 生态",
+      "is_root": true,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "5.9.1"
+      ]
+    },
+    {
+      "name": "jupyterlab-widgets",
+      "category": "Jupyter / IPython 生态",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "3.0.16"
+      ]
+    },
+    {
+      "name": "lifelines",
+      "category": "科学计算与机器学习",
+      "is_root": true,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.30.3"
+      ]
+    },
+    {
+      "name": "matplotlib-inline",
+      "category": "Jupyter / IPython 生态",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.2.2"
+      ]
+    },
+    {
+      "name": "mindspore-hub",
+      "category": "科学计算与机器学习",
+      "is_root": true,
+      "verdict": "unresolved",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "minisom",
+      "category": "科学计算与机器学习",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.3.6"
+      ]
+    },
+    {
+      "name": "mistune",
+      "category": "Jupyter / IPython 生态",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "3.2.1"
+      ]
+    },
+    {
+      "name": "ml-collections",
+      "category": "科学计算与机器学习",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.1.1"
+      ]
+    },
+    {
+      "name": "nest-asyncio",
+      "category": "Jupyter / IPython 生态",
+      "is_root": true,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.6.0"
+      ]
+    },
+    {
+      "name": "numexpr",
+      "category": "科学计算与机器学习",
+      "is_root": true,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.10.2"
+      ]
+    },
+    {
+      "name": "openpyxl",
+      "category": "Office 文档处理",
+      "is_root": true,
+      "verdict": "optional_native_build",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "3.1.5",
+        "3.1.5"
+      ]
+    },
+    {
+      "name": "parso",
+      "category": "Jupyter / IPython 生态",
+      "is_root": true,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.7.1"
+      ]
+    },
+    {
+      "name": "pickleshare",
+      "category": "Jupyter / IPython 生态",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.7.5"
+      ]
+    },
+    {
+      "name": "pluggy",
+      "category": "代码质量与开发工具",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.6.0"
+      ]
+    },
+    {
+      "name": "pqt-gcc",
+      "category": "其他工具类",
+      "is_root": true,
+      "verdict": "unresolved",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "prompt-toolkit",
+      "category": "Jupyter / IPython 生态",
+      "is_root": true,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "3.0.52"
+      ]
+    },
+    {
+      "name": "pychrome",
+      "category": "浏览器/进程自动化",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.2.3"
+      ]
+    },
+    {
+      "name": "pycodestyle",
+      "category": "代码质量与开发工具",
+      "is_root": true,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.13.2"
+      ]
+    },
+    {
+      "name": "pyflakes",
+      "category": "代码质量与开发工具",
+      "is_root": true,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "3.3.2"
+      ]
+    },
+    {
+      "name": "pygments",
+      "category": "Jupyter / IPython 生态",
+      "is_root": true,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.20.0"
+      ]
+    },
+    {
+      "name": "pynput",
+      "category": "Windows 系统自动化",
+      "is_root": true,
+      "verdict": "os_specific_api",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "pyopengl",
+      "category": "计算机视觉与图形",
+      "is_root": true,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "3.1.9"
+      ]
+    },
+    {
+      "name": "pypickle",
+      "category": "其他工具类",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.2"
+      ]
+    },
+    {
+      "name": "pypkgpack",
+      "category": "代码质量与开发工具",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.0"
+      ]
+    },
+    {
+      "name": "pyshp",
+      "category": "GIS 与地图可视化",
+      "is_root": true,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.3.1"
+      ]
+    },
+    {
+      "name": "pytest",
+      "category": "代码质量与开发工具",
+      "is_root": true,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "9.0.3"
+      ]
+    },
+    {
+      "name": "python-jsonrpc-server",
+      "category": "代码质量与开发工具",
+      "is_root": true,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.2.0"
+      ]
+    },
+    {
+      "name": "python-language-server",
+      "category": "代码质量与开发工具",
+      "is_root": true,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.36.2"
+      ]
+    },
+    {
+      "name": "pywinauto",
+      "category": "Windows 系统自动化",
+      "is_root": true,
+      "verdict": "os_specific_api",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "ruamel-yaml",
+      "category": "序列化与配置",
+      "is_root": true,
+      "verdict": "optional_native_build",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.19.1"
+      ]
+    },
+    {
+      "name": "ruamel-yaml-conda",
+      "category": "序列化与配置",
+      "is_root": true,
+      "verdict": "native_compiled",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "schedule",
+      "category": "浏览器/进程自动化",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.2.2",
+        "1.2.2"
+      ]
+    },
+    {
+      "name": "sentry",
+      "category": "错误监控与运维",
+      "is_root": true,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "23.7.1"
+      ]
+    },
+    {
+      "name": "setuptools-scm",
+      "category": "代码质量与开发工具",
+      "is_root": true,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "10.0.5"
+      ]
+    },
+    {
+      "name": "tf2onnx",
+      "category": "科学计算与机器学习",
+      "is_root": true,
+      "verdict": "platform_branching",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "tjc-common",
+      "category": "其他工具类",
+      "is_root": true,
+      "verdict": "platform_branching",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "toolz",
+      "category": "科学计算与机器学习",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.1.0"
+      ]
+    },
+    {
+      "name": "traitlets",
+      "category": "Jupyter / IPython 生态",
+      "is_root": true,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "5.15.0"
+      ]
+    },
+    {
+      "name": "tyjuliacall",
+      "category": "其他工具类",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "ultralytics",
+      "category": "科学计算与机器学习",
+      "is_root": true,
+      "verdict": "os_specific_api",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "wcwidth",
+      "category": "Jupyter / IPython 生态",
+      "is_root": true,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.7.0"
+      ]
+    },
+    {
+      "name": "widgetsnbextension",
+      "category": "Jupyter / IPython 生态",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "4.0.15"
+      ]
+    },
+    {
+      "name": "win-inet-pton",
+      "category": "Windows 系统自动化",
+      "is_root": true,
+      "verdict": "os_specific_api",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "win32-setctime",
+      "category": "Windows 系统自动化",
+      "is_root": true,
+      "verdict": "os_specific_api",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "wisepy2",
+      "category": "代码质量与开发工具",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.0"
+      ]
+    },
+    {
+      "name": "xyzservices",
+      "category": "GIS 与地图可视化",
+      "is_root": true,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2026.3.0"
+      ]
+    },
+    {
+      "name": "aiohappyeyeballs",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.6.1"
+      ]
+    },
+    {
+      "name": "aiohttp",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "3.11.17",
+        "3.9.5"
+      ]
+    },
+    {
+      "name": "aiosignal",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.4.0"
+      ]
+    },
+    {
+      "name": "amqp",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "optional_native_build",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "annotated-doc",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.0.4",
+        "0.0.4"
+      ]
+    },
+    {
+      "name": "annotated-types",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.7.0",
+        "0.7.0"
+      ]
+    },
+    {
+      "name": "anyio",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "4.13.0"
+      ]
+    },
+    {
+      "name": "asgiref",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "3.9.1"
+      ]
+    },
+    {
+      "name": "async-generator",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "attrs",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "26.1.0"
+      ]
+    },
+    {
+      "name": "avalara",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "babel",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.18.0"
+      ]
+    },
+    {
+      "name": "beautifulsoup4",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "4.14.3"
+      ]
+    },
+    {
+      "name": "billiard",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "boto3",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.43.29"
+      ]
+    },
+    {
+      "name": "botocore",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.43.29"
+      ]
+    },
+    {
+      "name": "branca",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.8.2"
+      ]
+    },
+    {
+      "name": "brotli",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.1.0"
+      ]
+    },
+    {
+      "name": "cachetools",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "7.1.4"
+      ]
+    },
+    {
+      "name": "celery",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "5.6.3"
+      ]
+    },
+    {
+      "name": "certifi",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2026.5.20"
+      ]
+    },
+    {
+      "name": "cffi",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.0.0"
+      ]
+    },
+    {
+      "name": "chardet",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "5.2.0"
+      ]
+    },
+    {
+      "name": "charset-normalizer",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "3.4.7"
+      ]
+    },
+    {
+      "name": "click",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "8.4.1"
+      ]
+    },
+    {
+      "name": "click-didyoumean",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "click-plugins",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "click-repl",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "confluent-kafka",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.9.0"
+      ]
+    },
+    {
+      "name": "contourpy",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.3.3"
+      ]
+    },
+    {
+      "name": "croniter",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "6.2.2"
+      ]
+    },
+    {
+      "name": "cryptography",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "45.0.5"
+      ]
+    },
+    {
+      "name": "cssselect",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.4.0"
+      ]
+    },
+    {
+      "name": "cssutils",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.15.0"
+      ]
+    },
+    {
+      "name": "cycler",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.12.1"
+      ]
+    },
+    {
+      "name": "datadog",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.52.1"
+      ]
+    },
+    {
+      "name": "decorator",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "5.3.1",
+        "5.3.1"
+      ]
+    },
+    {
+      "name": "distro",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "django",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "5.2.4"
+      ]
+    },
+    {
+      "name": "django-crispy-forms",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "django-csp",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "django-pg-zero-downtime-migrations",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "djangorestframework",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "3.17.1"
+      ]
+    },
+    {
+      "name": "drf-spectacular",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "email-reply-parser",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "encutils",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "et-xmlfile",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.0.0"
+      ]
+    },
+    {
+      "name": "executing",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "fastjsonschema",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "fido2",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "filelock",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "3.29.0"
+      ]
+    },
+    {
+      "name": "flatbuffers",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "25.12.19"
+      ]
+    },
+    {
+      "name": "fonttools",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "4.63.0"
+      ]
+    },
+    {
+      "name": "formulaic",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.2.2"
+      ]
+    },
+    {
+      "name": "frozenlist",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.7.0"
+      ]
+    },
+    {
+      "name": "fsspec",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2026.4.0"
+      ]
+    },
+    {
+      "name": "future",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.0.0",
+        "1.0.0"
+      ]
+    },
+    {
+      "name": "google-api-core",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "google-auth",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.53.0"
+      ]
+    },
+    {
+      "name": "google-cloud-bigtable",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "google-cloud-core",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "google-cloud-functions",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "google-cloud-monitoring",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "google-cloud-pubsub",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "google-cloud-spanner",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "google-cloud-storage",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "google-crc32c",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "google-resumable-media",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "googleapis-common-protos",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "grpc-google-iam-v1",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "grpc-interceptor",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "grpc-stubs",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "grpcio",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.80.0",
+        "1.81.0"
+      ]
+    },
+    {
+      "name": "grpcio-status",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "h11",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.16.0"
+      ]
+    },
+    {
+      "name": "hiredis",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "httpcore",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.0.9"
+      ]
+    },
+    {
+      "name": "httpx",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.28.1"
+      ]
+    },
+    {
+      "name": "idna",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "3.15"
+      ]
+    },
+    {
+      "name": "inflection",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "ipython",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "9.13.0"
+      ]
+    },
+    {
+      "name": "ipython-pygments-lexers",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "isodate",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "jaxlib",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "jinja2",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "3.1.6"
+      ]
+    },
+    {
+      "name": "jiter",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.14.0"
+      ]
+    },
+    {
+      "name": "jmespath",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "jsonschema",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "4.26.0"
+      ]
+    },
+    {
+      "name": "jsonschema-specifications",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2025.9.1"
+      ]
+    },
+    {
+      "name": "julia-numpy",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "kiwisolver",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.5.0"
+      ]
+    },
+    {
+      "name": "kombu",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "loguru",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.7.3"
+      ]
+    },
+    {
+      "name": "lxml",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "5.3.2"
+      ]
+    },
+    {
+      "name": "markupsafe",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "3.0.3"
+      ]
+    },
+    {
+      "name": "matplotlib",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "3.10.0",
+        "3.10.9"
+      ]
+    },
+    {
+      "name": "maxminddb",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "3.1.1"
+      ]
+    },
+    {
+      "name": "milksnake",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "optional_native_build",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "ml-dtypes",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.5.1"
+      ]
+    },
+    {
+      "name": "mmh3",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "5.2.1"
+      ]
+    },
+    {
+      "name": "more-itertools",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "11.1.0"
+      ]
+    },
+    {
+      "name": "mpmath",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.3.0"
+      ]
+    },
+    {
+      "name": "msgpack",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.1.0"
+      ]
+    },
+    {
+      "name": "multidict",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "6.6.3",
+        "6.7.1"
+      ]
+    },
+    {
+      "name": "narwhals",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.22.0"
+      ]
+    },
+    {
+      "name": "networkx",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "3.6.1"
+      ]
+    },
+    {
+      "name": "numpy",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.4.5",
+        "2.4.6"
+      ]
+    },
+    {
+      "name": "nvidia-ml-py",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "oauthlib",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "3.3.1"
+      ]
+    },
+    {
+      "name": "onnx",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.21.0"
+      ]
+    },
+    {
+      "name": "openai",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "(无版本号)"
+      ]
+    },
+    {
+      "name": "opencv-python",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "(无版本号)"
+      ]
+    },
+    {
+      "name": "opentelemetry-api",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.34.1"
+      ]
+    },
+    {
+      "name": "opentelemetry-resourcedetector-gcp",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "opentelemetry-sdk",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "opentelemetry-semantic-conventions",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "opt-einsum",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "3.4.0"
+      ]
+    },
+    {
+      "name": "outcome",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.3.0.post0"
+      ]
+    },
+    {
+      "name": "packaging",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "26.2"
+      ]
+    },
+    {
+      "name": "pandas",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "3.0.3",
+        "2.2.3"
+      ]
+    },
+    {
+      "name": "parsimonious",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "petname",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "pexpect",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "4.9.0"
+      ]
+    },
+    {
+      "name": "phabricator",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "phonenumberslite",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "pillow",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "12.2.0"
+      ]
+    },
+    {
+      "name": "planout",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "platformdirs",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "4.3.8"
+      ]
+    },
+    {
+      "name": "polars",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.40.0"
+      ]
+    },
+    {
+      "name": "polars-runtime-32",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "progressbar2",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "propcache",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.3.2"
+      ]
+    },
+    {
+      "name": "proto-plus",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "protobuf",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "7.34.1"
+      ]
+    },
+    {
+      "name": "psutil",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "7.2.2"
+      ]
+    },
+    {
+      "name": "psycopg2-binary",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.9.12"
+      ]
+    },
+    {
+      "name": "ptyprocess",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.7.0"
+      ]
+    },
+    {
+      "name": "pure-eval",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "py4j",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.10.9.9"
+      ]
+    },
+    {
+      "name": "pyasn1",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.6.3"
+      ]
+    },
+    {
+      "name": "pyasn1-modules",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.4.1"
+      ]
+    },
+    {
+      "name": "pycountry",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "pycparser",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "3.0"
+      ]
+    },
+    {
+      "name": "pydantic",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.13.4"
+      ]
+    },
+    {
+      "name": "pydantic-core",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.46.4",
+        "2.33.2"
+      ]
+    },
+    {
+      "name": "pyjwt",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.12.1"
+      ]
+    },
+    {
+      "name": "pyobjc-core",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "pyobjc-framework-applicationservices",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "pyobjc-framework-cocoa",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "pyobjc-framework-coretext",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "pyobjc-framework-quartz",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "pyopenssl",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "optional_native_build",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "25.1.0"
+      ]
+    },
+    {
+      "name": "pyparsing",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "3.3.2"
+      ]
+    },
+    {
+      "name": "pyrsistent",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.20.0"
+      ]
+    },
+    {
+      "name": "pysocks",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.7.1"
+      ]
+    },
+    {
+      "name": "python-dateutil",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.9.0.post0"
+      ]
+    },
+    {
+      "name": "python-docx",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.2.0",
+        "1.2.0"
+      ]
+    },
+    {
+      "name": "python-memcached",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "python-rapidjson",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "python-u2flib-server",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "python-utils",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "python3-saml",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "pytz",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2026.2"
+      ]
+    },
+    {
+      "name": "pyuwsgi",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "pyvat",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "pyyaml",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "6.0.3"
+      ]
+    },
+    {
+      "name": "pyzmq",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "27.1.0",
+        "26.4.0"
+      ]
+    },
+    {
+      "name": "rb",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "redis",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "8.0.0"
+      ]
+    },
+    {
+      "name": "redis-py-cluster",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "referencing",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.37.0"
+      ]
+    },
+    {
+      "name": "regex",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2026.5.9"
+      ]
+    },
+    {
+      "name": "reportlab",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "4.5.1"
+      ]
+    },
+    {
+      "name": "requests",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.34.2"
+      ]
+    },
+    {
+      "name": "requests-oauthlib",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.0.0"
+      ]
+    },
+    {
+      "name": "rfc3339-validator",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "rfc3986-validator",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "rpds-py",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.30.0",
+        "2026.5.1"
+      ]
+    },
+    {
+      "name": "rsa",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "4.9.1"
+      ]
+    },
+    {
+      "name": "s3transfer",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "scipy",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.17.1"
+      ]
+    },
+    {
+      "name": "selenium",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "optional_native_build",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "4.44.0"
+      ]
+    },
+    {
+      "name": "sentry-arroyo",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "sentry-kafka-schemas",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "sentry-protos",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "sentry-redis-tools",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "sentry-relay",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "sentry-sdk",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "setuptools",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "79.0.1",
+        "82.0.1"
+      ]
+    },
+    {
+      "name": "simplejson",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "3.20.1"
+      ]
+    },
+    {
+      "name": "six",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.17.0"
+      ]
+    },
+    {
+      "name": "sniffio",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.3.1"
+      ]
+    },
+    {
+      "name": "snuba-sdk",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "sortedcontainers",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.4.0"
+      ]
+    },
+    {
+      "name": "soupsieve",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.8.3"
+      ]
+    },
+    {
+      "name": "sqlparse",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.5.3"
+      ]
+    },
+    {
+      "name": "stack-data",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "optional_native_build",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "starlette",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.3.1"
+      ]
+    },
+    {
+      "name": "statsd",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "stripe",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "15.2.1"
+      ]
+    },
+    {
+      "name": "structlog",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "26.1.0"
+      ]
+    },
+    {
+      "name": "symbolic",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "sympy",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "optional_native_build",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.14.0"
+      ]
+    },
+    {
+      "name": "tomli",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.2.1"
+      ]
+    },
+    {
+      "name": "torch",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "torchvision",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "tornado",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "6.5.5"
+      ]
+    },
+    {
+      "name": "toronado",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "tqdm",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "4.67.3"
+      ]
+    },
+    {
+      "name": "trio",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.33.0"
+      ]
+    },
+    {
+      "name": "trio-websocket",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.12.2"
+      ]
+    },
+    {
+      "name": "typing-extensions",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "4.15.0"
+      ]
+    },
+    {
+      "name": "typing-inspection",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.4.1",
+        "0.4.2"
+      ]
+    },
+    {
+      "name": "tzdata",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2026.2"
+      ]
+    },
+    {
+      "name": "tzlocal",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "os_specific_api",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "5.3.1"
+      ]
+    },
+    {
+      "name": "ua-parser",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "ua-parser-builtins",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "ujson",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "5.12.0"
+      ]
+    },
+    {
+      "name": "ultralytics-thop",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "unidiff",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.7.5"
+      ]
+    },
+    {
+      "name": "uritemplate",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "4.2.0"
+      ]
+    },
+    {
+      "name": "urllib3",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "2.7.0"
+      ]
+    },
+    {
+      "name": "vcs-versioning",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "vine",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "websocket-client",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.9.0",
+        "1.8.0"
+      ]
+    },
+    {
+      "name": "wheel",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "platform_branching",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "(无版本号)"
+      ]
+    },
+    {
+      "name": "wrapt",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.17.2"
+      ]
+    },
+    {
+      "name": "wsproto",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "cross_platform",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.3.2"
+      ]
+    },
+    {
+      "name": "xmlsec",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": false,
+      "harmony_versions": []
+    },
+    {
+      "name": "yarl",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "1.20.1"
+      ]
+    },
+    {
+      "name": "zstandard",
+      "category": "未分类(依赖库)",
+      "is_root": false,
+      "verdict": "native_compiled",
+      "harmony_adapted": true,
+      "harmony_versions": [
+        "0.23.0"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>依赖图谱 · 平台适配分析</title>
+<script src="https://unpkg.com/vis-network@9.1.9/standalone/umd/vis-network.min.js"></script>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  body { display: flex; }
+
+  #sidebar {
+    width: 300px; flex-shrink: 0; height: 100vh; overflow-y: auto;
+    background: #191b1f; color: #e6e6e6; padding: 16px; border-right: 1px solid #2a2d33;
+  }
+  #sidebar h1 { font-size: 15px; margin: 0 0 4px; color: #fff; }
+  #sidebar .sub { font-size: 11px; color: #9aa0a6; margin-bottom: 16px; }
+  #sidebar h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: #9aa0a6; margin: 18px 0 8px; }
+
+  #search { width: 100%; padding: 7px 9px; border-radius: 6px; border: 1px solid #383c44; background: #24262b; color: #fff; font-size: 13px; }
+  #search:focus { outline: none; border-color: #5b9dff; }
+  #searchResults { max-height: 160px; overflow-y: auto; margin-top: 6px; }
+  #searchResults div { padding: 5px 8px; font-size: 12.5px; cursor: pointer; border-radius: 4px; }
+  #searchResults div:hover { background: #2a2d33; }
+
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .stat-box { background: #24262b; border-radius: 6px; padding: 8px; text-align: center; }
+  .stat-box .num { font-size: 18px; font-weight: 600; color: #fff; }
+  .stat-box .lbl { font-size: 10.5px; color: #9aa0a6; margin-top: 2px; }
+  .stat-box.warn .num { color: #f28e2b; }
+
+  .legend-item { display: flex; align-items: center; gap: 7px; font-size: 12px; padding: 3px 2px; cursor: pointer; border-radius: 4px; }
+  .legend-item:hover { background: #24262b; }
+  .legend-item.disabled { opacity: 0.35; }
+  .swatch { width: 11px; height: 11px; border-radius: 3px; flex-shrink: 0; }
+  .swatch-outline { width: 11px; height: 11px; border-radius: 3px; border: 2px solid #999; background: transparent; flex-shrink: 0; }
+  .legend-sub { font-size: 10.5px; color: #6b7076; margin: -3px 0 6px; }
+
+  .toolbtn { display: inline-block; margin: 3px 6px 3px 0; padding: 5px 10px; font-size: 12px; background: #24262b; border: 1px solid #383c44; color: #e6e6e6; border-radius: 6px; cursor: pointer; }
+  .toolbtn:hover { background: #2f333a; }
+  .toolbtn.active { background: #2a5fd0; border-color: #2a5fd0; color: #fff; }
+  .toolbtn.warnbtn.active { background: #b03a3a; border-color: #b03a3a; }
+  label.chk { font-size: 12px; display: flex; align-items: center; gap: 6px; margin: 6px 0; color: #cfd3d8; cursor: pointer; }
+
+  #detailFloat {
+    position: absolute; top: 10px; left: 10px; z-index: 6;
+    width: 380px; max-width: calc(100% - 20px); max-height: calc(100% - 20px);
+    display: flex; flex-direction: column;
+    background: #24262b; color: #e6e6e6; border-radius: 10px; border: 1px solid #33363d;
+    box-shadow: 0 10px 30px rgba(0,0,0,.3);
+  }
+  #detailFloatHead {
+    display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
+    padding: 10px 12px; border-bottom: 1px solid #33363d;
+    font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: #9aa0a6;
+  }
+  #detailCloseBtn { background: none; border: none; color: #9aa0a6; font-size: 17px; line-height: 1; cursor: pointer; padding: 0 2px; }
+  #detailCloseBtn:hover { color: #fff; }
+  #detail { padding: 12px; font-size: 12.5px; line-height: 1.6; min-height: 40px; overflow-y: auto; }
+  #detail .name { font-size: 14px; font-weight: 600; color: #fff; word-break: break-all; }
+  #detail .row span.k { color: #9aa0a6; }
+  #detail .deplist { margin-top: 6px; }
+  #detail .deplist .tag { display: inline-block; background: #34383f; color: #d5d9de; border-radius: 4px; padding: 1px 6px; margin: 2px 3px 0 0; font-size: 11.5px; cursor: pointer; }
+  #detail .deplist .tag:hover { background: #44494f; }
+  #detail .empty { color: #6b7076; }
+  #detail hr { border: none; border-top: 1px solid #34383f; margin: 8px 0; }
+  #detail .reasons { margin: 4px 0 0; padding-left: 16px; }
+  #detail .reasons li { margin-bottom: 2px; }
+  #detail .evid { color: #b7bbc1; font-size: 11.5px; }
+
+  .vbadge { display: inline-block; color: #fff; font-size: 10.5px; padding: 1px 7px; border-radius: 9px; white-space: nowrap; margin: 2px 4px 2px 0; }
+
+  #graphWrap { flex: 1; height: 100vh; position: relative; background: #f7f8fa; }
+  #graph { position: absolute; inset: 0; }
+  #loading { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #888; background: #f7f8fa; z-index: 5; }
+  #toggleListBtn {
+    position: absolute; top: 10px; right: 10px; z-index: 6;
+    background: #fff; border: 1px solid #d8dadf; color: #333; box-shadow: 0 1px 3px rgba(0,0,0,.12);
+    padding: 6px 11px; font-size: 12px; border-radius: 6px; cursor: pointer;
+  }
+  #toggleListBtn:hover { background: #f2f3f5; }
+
+  #listPanel {
+    width: 350px; flex-shrink: 0; height: 100vh; overflow: hidden;
+    display: flex; flex-direction: column; background: #fff; border-left: 1px solid #e2e4e8;
+  }
+  #listPanel.collapsed { width: 0; border-left: none; }
+  #listHeader { padding: 14px 14px 8px; border-bottom: 1px solid #eee; flex-shrink: 0; }
+  #listHeader h1 { font-size: 14px; margin: 0 0 2px; color: #1a1a1a; }
+  #listHeader .sub { font-size: 11px; color: #888; }
+  #listControls { padding: 10px 14px; border-bottom: 1px solid #eee; display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; }
+  #listSearch { width: 100%; padding: 6px 9px; font-size: 12.5px; border: 1px solid #d8dadf; border-radius: 6px; }
+  #listSearch:focus { outline: none; border-color: #5b9dff; }
+  .list-selects { display: flex; gap: 6px; }
+  .list-selects select { flex: 1; font-size: 11.5px; padding: 4px 5px; border: 1px solid #d8dadf; border-radius: 6px; background: #fff; color: #333; min-width: 0; }
+  #listRows { flex: 1; overflow-y: auto; }
+  .list-row { padding: 7px 14px; border-bottom: 1px solid #f0f1f3; cursor: pointer; border-left: 3px solid transparent; }
+  .list-row:hover { background: #f7f8fa; }
+  .list-row.selected { background: #eaf1ff; }
+  .lr-top { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+  .lr-name { font-size: 12.5px; font-weight: 600; color: #222; word-break: break-all; }
+  .lr-bottom { display: flex; align-items: center; gap: 5px; margin-top: 3px; font-size: 10.5px; color: #8a8f96; }
+  .cat-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .lr-cat { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .lr-deps { margin-left: auto; flex-shrink: 0; }
+  .lr-desc { margin-top: 3px; font-size: 11px; color: #666; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .list-empty { padding: 20px 14px; color: #999; font-size: 12.5px; text-align: center; }
+
+  #detail .desc { margin: 4px 0 8px; padding: 8px 9px; background: #1c1e22; border-left: 3px solid #5b9dff; border-radius: 4px; color: #d5d9de; }
+  #detail .note { margin: 4px 0 8px; padding: 8px 9px; background: #2b2308; border-left: 3px solid #cf9e00; border-radius: 4px; color: #e8dcae; font-size: 11.5px; }
+  #detail .links a { color: #5b9dff; text-decoration: none; margin-right: 10px; }
+  #detail .links a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div id="sidebar">
+  <h1>Python 库依赖图谱</h1>
+  <div class="sub" id="metaLine">加载中...</div>
+
+  <input id="search" type="text" placeholder="搜索库名，回车定位...">
+  <div id="searchResults"></div>
+
+  <h2>概览</h2>
+  <div class="stat-grid">
+    <div class="stat-box"><div class="num" id="statNodes">-</div><div class="lbl">节点</div></div>
+    <div class="stat-box"><div class="num" id="statEdges">-</div><div class="lbl">依赖边</div></div>
+    <div class="stat-box"><div class="num" id="statRoots">-</div><div class="lbl">清单根库</div></div>
+    <div class="stat-box"><div class="num" id="statTrans">-</div><div class="lbl">传递依赖</div></div>
+    <div class="stat-box warn"><div class="num" id="statAdapt">-</div><div class="lbl">根库需适配</div></div>
+    <div class="stat-box warn"><div class="num" id="statUnresolved">-</div><div class="lbl">根库未解析</div></div>
+  </div>
+
+  <h2>视图</h2>
+  <div>
+    <span class="toolbtn" id="btnFit">适应画布</span>
+    <span class="toolbtn" id="btnPhysics">物理引擎: 开</span>
+    <span class="toolbtn" id="btnRootsOnly">仅看根库</span>
+    <span class="toolbtn warnbtn" id="btnAdaptOnly">仅看需适配</span>
+  </div>
+  <label class="chk"><input type="checkbox" id="chkHideIsolated"> 隐藏被筛掉分类后孤立的传递依赖</label>
+
+  <h2>按分类筛选（点击切换）</h2>
+  <div id="legend"></div>
+
+  <h2>按平台适配结论筛选（点击切换）</h2>
+  <div class="legend-sub">边框颜色 = 适配风险等级，与图中节点边框对应</div>
+  <div id="verdictLegend"></div>
+</div>
+
+<div id="graphWrap">
+  <div id="graph"></div>
+  <div id="loading">正在加载依赖图谱与平台分析数据...</div>
+  <button id="toggleListBtn">隐藏列表 ›</button>
+  <div id="detailFloat">
+    <div id="detailFloatHead">
+      <span>选中节点</span>
+      <button id="detailCloseBtn" title="关闭详情">×</button>
+    </div>
+    <div id="detail"><span class="empty">点击图中或右侧列表中的库查看详情</span></div>
+  </div>
+</div>
+
+<div id="listPanel">
+  <div id="listHeader">
+    <h1>库列表</h1>
+    <div class="sub"><span id="listCount">- / -</span> · 与图谱联动筛选</div>
+  </div>
+  <div id="listControls">
+    <input id="listSearch" type="text" placeholder="筛选列表（同时联动图谱）...">
+    <div class="list-selects">
+      <select id="depFilterSelect">
+        <option value="all">依赖关系：全部</option>
+        <option value="leaf">无直接依赖（叶子库）</option>
+        <option value="hasDeps">有直接依赖</option>
+        <option value="depended">被其他库依赖</option>
+        <option value="notDepended">未被其他库依赖</option>
+      </select>
+      <select id="sortSelect">
+        <option value="severity">按适配优先级排序</option>
+        <option value="name">按名称排序</option>
+        <option value="indeg">按被依赖数排序</option>
+      </select>
+    </div>
+  </div>
+  <div id="listRows"></div>
+</div>
+
+<script>
+const PALETTE = [
+  "#4e79a7","#f28e2b","#e15759","#76b7b2","#59a14f",
+  "#edc948","#b07aa1","#ff9da7","#9c755f","#bab0ac",
+  "#86bcb6","#d37295","#8cd17d","#f1ce63"
+];
+const TRANSITIVE_COLOR = "#c9ccd1";
+
+const VERDICT_META = {
+  native_compiled:       { label: '原生编译产物',   color: '#e15759', order: 5, dashed: false, glow: true  },
+  os_specific_api:        { label: 'OS 专属 API',    color: '#f28e2b', order: 4, dashed: false, glow: true  },
+  platform_branching:     { label: '平台分支代码',   color: '#cf9e00', order: 3, dashed: false, glow: false },
+  optional_native_build:  { label: '可选原生构建',   color: '#b07aa1', order: 2, dashed: false, glow: false },
+  unresolved:             { label: '未解析/需确认',  color: '#9aa0a6', order: 1, dashed: true,  glow: false },
+  cross_platform:         { label: '跨平台安全',     color: '#59a14f', order: 0, dashed: false, glow: false },
+};
+const VERDICT_ORDER = ['native_compiled','os_specific_api','platform_branching','optional_native_build','unresolved','cross_platform'];
+
+let allNodes, allEdges, network, nodesDS, edgesDS;
+let catColor = {};
+let disabledCats = new Set();
+let disabledVerdicts = new Set();
+let rootsOnlyMode = false;
+let adaptOnlyMode = false;
+let physicsOn = true;
+let listSearchText = '';
+let depFilterMode = 'all';
+let sortMode = 'severity';
+let selectedNodeId = null;
+let currentSelectedRow = null;
+let rowElByName = {};
+let VERDICT_LABELS_FULL = {};
+
+Promise.all([
+  fetch('dependency_graph.json').then(res => {
+    if (!res.ok) throw new Error(`dependency_graph.json HTTP ${res.status}`);
+    return res.json();
+  }),
+  fetch('platform_analysis.json').then(res => {
+    if (!res.ok) throw new Error(`platform_analysis.json HTTP ${res.status}`);
+    return res.json();
+  }),
+  fetch('libraries_categorized.json').then(res => {
+    if (!res.ok) throw new Error(`libraries_categorized.json HTTP ${res.status}`);
+    return res.json();
+  })
+]).then(([graphData, platformData, libData]) => init(graphData, platformData, libData))
+  .catch(err => {
+    document.getElementById('loading').textContent = '加载数据失败: ' + err;
+    console.error(err);
+  });
+
+function verdictOf(n) {
+  return (n.platform && n.platform.verdict) || 'cross_platform';
+}
+
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function normalizeName(s) {
+  return String(s).toLowerCase().replace(/[-_.]+/g, '-');
+}
+
+function init(graphData, platformData, libData) {
+  VERDICT_LABELS_FULL = platformData.meta.verdict_labels || {};
+  const platformMap = {};
+  platformData.results.forEach(r => { platformMap[r.name] = r; });
+
+  const libMap = {};
+  (libData.categories || []).forEach(c => {
+    c.libraries.forEach(lib => { libMap[normalizeName(lib.name)] = lib; });
+  });
+
+  allNodes = graphData.nodes;
+  allEdges = graphData.edges;
+  allNodes.forEach(n => {
+    n.platform = platformMap[n.name] || null;
+    n.lib = libMap[normalizeName(n.name)] || null;
+  });
+
+  const cats = [...new Set(allNodes.filter(n => n.category).map(n => n.category))].sort();
+  cats.forEach((c, i) => catColor[c] = PALETTE[i % PALETTE.length]);
+
+  const rootNodes = allNodes.filter(n => n.is_root);
+
+  document.getElementById('metaLine').textContent =
+    `${graphData.meta.root_count} 个根库 · include_extras=${graphData.meta.include_extras} · 平台分析覆盖全部 ${allNodes.length} 个库`;
+  document.getElementById('statNodes').textContent = allNodes.length;
+  document.getElementById('statEdges').textContent = allEdges.length;
+  document.getElementById('statRoots').textContent = rootNodes.length;
+  document.getElementById('statTrans').textContent = allNodes.filter(n => !n.is_root).length;
+  document.getElementById('statAdapt').textContent = rootNodes.filter(n => verdictOf(n) !== 'cross_platform' && verdictOf(n) !== 'unresolved').length;
+  document.getElementById('statUnresolved').textContent = rootNodes.filter(n => verdictOf(n) === 'unresolved').length;
+
+  buildLegend(cats);
+  buildVerdictLegend(rootNodes);
+
+  const inDegAll = {};
+  allEdges.forEach(e => inDegAll[e.to] = (inDegAll[e.to] || 0) + 1);
+
+  const visNodes = allNodes.map(n => {
+    const color = n.is_root ? catColor[n.category] : TRANSITIVE_COLOR;
+    const deg = inDegAll[n.name] || 0;
+    const verdict = verdictOf(n);
+    const vm = VERDICT_META[verdict];
+    const needsAttention = verdict !== 'cross_platform';
+    const borderColor = needsAttention ? vm.color : color;
+    const borderWidth = needsAttention ? (vm.order >= 4 ? 4 : 3) : 1;
+
+    const nodeObj = {
+      id: n.name,
+      label: n.name,
+      value: Math.max(4, (n.is_root ? 10 : 4) + deg),
+      color: {
+        background: color,
+        border: borderColor,
+        highlight: { background: color, border: '#222' }
+      },
+      borderWidth,
+      shape: 'dot',
+      shapeProperties: { borderDashes: vm.dashed ? [4, 3] : false },
+      font: { size: n.is_root ? 13 : 10, color: '#222' },
+      title: tooltipFor(n, deg),
+      _data: n
+    };
+    if (vm.glow) {
+      nodeObj.shadow = { enabled: true, color: borderColor + 'aa', size: 12, x: 0, y: 0 };
+    }
+    return nodeObj;
+  });
+
+  const visEdges = allEdges.map((e, i) => ({
+    id: i, from: e.from, to: e.to, arrows: 'to',
+    color: { color: '#cfd3d8', highlight: '#5b9dff', opacity: 0.55 },
+    width: 1, smooth: { type: 'continuous' }
+  }));
+
+  nodesDS = new vis.DataSet(visNodes);
+  edgesDS = new vis.DataSet(visEdges);
+
+  const container = document.getElementById('graph');
+  network = new vis.Network(container, { nodes: nodesDS, edges: edgesDS }, {
+    physics: {
+      barnesHut: { gravitationalConstant: -12000, springLength: 90, springConstant: 0.02, damping: 0.35 },
+      stabilization: { iterations: 250 }
+    },
+    interaction: { hover: true, tooltipDelay: 120 },
+    layout: { improvedLayout: true }
+  });
+
+  network.once('stabilizationIterationsDone', () => {
+    document.getElementById('loading').style.display = 'none';
+  });
+  setTimeout(() => document.getElementById('loading').style.display = 'none', 4000);
+
+  network.on('click', params => {
+    if (params.nodes.length) showDetail(params.nodes[0]);
+  });
+
+  document.getElementById('btnFit').onclick = () => network.fit({ animation: true });
+  document.getElementById('btnPhysics').onclick = e => {
+    physicsOn = !physicsOn;
+    network.setOptions({ physics: physicsOn });
+    e.target.textContent = '物理引擎: ' + (physicsOn ? '开' : '关');
+    e.target.classList.toggle('active', physicsOn);
+  };
+  document.getElementById('btnRootsOnly').onclick = e => {
+    rootsOnlyMode = !rootsOnlyMode;
+    e.target.classList.toggle('active', rootsOnlyMode);
+    applyFilter();
+  };
+  document.getElementById('btnAdaptOnly').onclick = e => {
+    adaptOnlyMode = !adaptOnlyMode;
+    e.target.classList.toggle('active', adaptOnlyMode);
+    disabledVerdicts = adaptOnlyMode ? new Set(['cross_platform']) : new Set();
+    syncVerdictLegendUI();
+    applyFilter();
+  };
+  document.getElementById('chkHideIsolated').onchange = applyFilter;
+
+  document.getElementById('detailCloseBtn').onclick = () => {
+    selectedNodeId = null;
+    if (currentSelectedRow) { currentSelectedRow.classList.remove('selected'); currentSelectedRow = null; }
+    network.unselectAll();
+    document.getElementById('detail').innerHTML = '<span class="empty">点击图中或右侧列表中的库查看详情</span>';
+  };
+
+  document.getElementById('listSearch').addEventListener('input', e => {
+    listSearchText = e.target.value;
+    applyFilter();
+  });
+  document.getElementById('depFilterSelect').addEventListener('change', e => {
+    depFilterMode = e.target.value;
+    applyFilter();
+  });
+  document.getElementById('sortSelect').addEventListener('change', e => {
+    sortMode = e.target.value;
+    applyFilter();
+  });
+
+  let listCollapsed = false;
+  document.getElementById('toggleListBtn').onclick = e => {
+    listCollapsed = !listCollapsed;
+    document.getElementById('listPanel').classList.toggle('collapsed', listCollapsed);
+    e.target.textContent = listCollapsed ? '‹ 显示列表' : '隐藏列表 ›';
+  };
+
+  const search = document.getElementById('search');
+  const results = document.getElementById('searchResults');
+  search.addEventListener('input', () => {
+    const q = search.value.trim().toLowerCase();
+    results.innerHTML = '';
+    if (!q) return;
+    allNodes.filter(n => n.name.toLowerCase().includes(q)).slice(0, 30).forEach(n => {
+      const div = document.createElement('div');
+      div.textContent = n.name + (n.is_root ? '' : '  (传递依赖)');
+      div.onclick = () => focusNode(n.name);
+      results.appendChild(div);
+    });
+  });
+  search.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      const q = search.value.trim().toLowerCase();
+      const hit = allNodes.find(n => n.name.toLowerCase() === q) ||
+                  allNodes.find(n => n.name.toLowerCase().includes(q));
+      if (hit) focusNode(hit.name);
+    }
+  });
+
+  applyFilter();
+}
+
+function tooltipFor(n, deg) {
+  const lines = [n.name];
+  if (n.version) lines.push('版本: ' + n.version);
+  if (n.category) lines.push('分类: ' + n.category);
+  lines.push(n.is_root ? '类型: 清单根库' : '类型: 传递依赖');
+  lines.push('被依赖次数: ' + deg);
+  const verdict = verdictOf(n);
+  lines.push('平台结论: ' + VERDICT_META[verdict].label);
+  if (n.platform && n.platform.flags && n.platform.flags.length > 1) {
+    lines.push('标记: ' + n.platform.flags.map(f => (VERDICT_META[f] || { label: f }).label).join(', '));
+  }
+  if (n.lib && n.lib.description) lines.push('简介: ' + n.lib.description);
+  return lines.join('\n');
+}
+
+function buildLegend(cats) {
+  const el = document.getElementById('legend');
+  cats.forEach(c => {
+    const item = document.createElement('div');
+    item.className = 'legend-item';
+    item.innerHTML = `<span class="swatch" style="background:${catColor[c]}"></span><span>${escapeHtml(c)}</span>`;
+    item.onclick = () => {
+      if (disabledCats.has(c)) disabledCats.delete(c); else disabledCats.add(c);
+      item.classList.toggle('disabled', disabledCats.has(c));
+      applyFilter();
+    };
+    el.appendChild(item);
+  });
+  const trItem = document.createElement('div');
+  trItem.className = 'legend-item';
+  trItem.innerHTML = `<span class="swatch" style="background:${TRANSITIVE_COLOR}"></span><span>传递依赖（非根库）</span>`;
+  el.appendChild(trItem);
+}
+
+function buildVerdictLegend(rootNodes) {
+  const el = document.getElementById('verdictLegend');
+  const counts = {};
+  VERDICT_ORDER.forEach(v => counts[v] = 0);
+  rootNodes.forEach(n => { const v = verdictOf(n); counts[v] = (counts[v] || 0) + 1; });
+
+  VERDICT_ORDER.forEach(v => {
+    const vm = VERDICT_META[v];
+    const item = document.createElement('div');
+    item.className = 'legend-item';
+    item.dataset.verdict = v;
+    item.title = VERDICT_LABELS_FULL[v] || '';
+    item.innerHTML = `<span class="swatch-outline" style="border-color:${vm.color}"></span><span>${vm.label} (${counts[v]})</span>`;
+    item.onclick = () => {
+      if (disabledVerdicts.has(v)) disabledVerdicts.delete(v); else disabledVerdicts.add(v);
+      item.classList.toggle('disabled', disabledVerdicts.has(v));
+      syncVerdictLegendUI();
+      applyFilter();
+    };
+    el.appendChild(item);
+  });
+}
+
+function syncVerdictLegendUI() {
+  document.querySelectorAll('#verdictLegend .legend-item').forEach(item => {
+    item.classList.toggle('disabled', disabledVerdicts.has(item.dataset.verdict));
+  });
+  const isAdaptOnly = disabledVerdicts.size === 1 && disabledVerdicts.has('cross_platform');
+  adaptOnlyMode = isAdaptOnly;
+  document.getElementById('btnAdaptOnly').classList.toggle('active', isAdaptOnly);
+}
+
+function applyFilter() {
+  const hideIsolated = document.getElementById('chkHideIsolated').checked;
+  const inDeg = {}, outDeg = {};
+  allEdges.forEach(e => {
+    inDeg[e.to] = (inDeg[e.to] || 0) + 1;
+    outDeg[e.from] = (outDeg[e.from] || 0) + 1;
+  });
+
+  const searchText = listSearchText.trim().toLowerCase();
+
+  function passesDepFilter(name) {
+    const out = outDeg[name] || 0, inn = inDeg[name] || 0;
+    switch (depFilterMode) {
+      case 'leaf': return out === 0;
+      case 'hasDeps': return out > 0;
+      case 'depended': return inn > 0;
+      case 'notDepended': return inn === 0;
+      default: return true;
+    }
+  }
+
+  function rootHidden(n) {
+    if (disabledCats.has(n.category)) return true;
+    if (disabledVerdicts.has(verdictOf(n))) return true;
+    if (searchText && !n.name.toLowerCase().includes(searchText)) return true;
+    if (!passesDepFilter(n.name)) return true;
+    return false;
+  }
+
+  const visibleRootNames = new Set(
+    allNodes.filter(n => n.is_root && !rootHidden(n)).map(n => n.name)
+  );
+
+  function nodeHidden(n) {
+    if (n.is_root) return !visibleRootNames.has(n.name);
+    if (rootsOnlyMode) return true;
+    if (disabledVerdicts.has(verdictOf(n))) return true;
+    if (searchText && !n.name.toLowerCase().includes(searchText)) return true;
+    if (!passesDepFilter(n.name)) return true;
+    if (hideIsolated) {
+      return !allEdges.some(e =>
+        (e.to === n.name && visibleRootNames.has(e.from)) ||
+        (e.from === n.name && visibleRootNames.has(e.to)));
+    }
+    return false;
+  }
+
+  const updates = allNodes.map(n => ({ id: n.name, hidden: nodeHidden(n) }));
+  nodesDS.update(updates);
+
+  const visibleNodeNames = new Set(updates.filter(u => !u.hidden).map(u => u.id));
+  renderList(visibleNodeNames, inDeg, outDeg);
+}
+
+function renderList(visibleNodeNames, inDeg, outDeg) {
+  const items = allNodes.filter(n => visibleNodeNames.has(n.name));
+
+  items.sort((a, b) => {
+    if (sortMode === 'name') return a.name.localeCompare(b.name);
+    if (sortMode === 'indeg') return (inDeg[b.name] || 0) - (inDeg[a.name] || 0) || a.name.localeCompare(b.name);
+    const oa = VERDICT_META[verdictOf(a)].order, ob = VERDICT_META[verdictOf(b)].order;
+    return ob - oa || a.name.localeCompare(b.name);
+  });
+
+  document.getElementById('listCount').textContent = `${items.length} / ${allNodes.length}`;
+
+  const container = document.getElementById('listRows');
+  container.innerHTML = '';
+  rowElByName = {};
+
+  if (!items.length) {
+    container.innerHTML = '<div class="list-empty">没有匹配的库</div>';
+    return;
+  }
+
+  items.forEach(n => {
+    const verdict = verdictOf(n);
+    const vm = VERDICT_META[verdict];
+    const row = document.createElement('div');
+    row.className = 'list-row';
+    row.style.borderLeftColor = vm.order > 0 ? vm.color : 'transparent';
+    row.dataset.id = n.name;
+    row.innerHTML = `
+      <div class="lr-top">
+        <span class="lr-name">${escapeHtml(n.name)}</span>
+        <span class="vbadge" style="background:${vm.color}" title="${escapeHtml(VERDICT_LABELS_FULL[verdict] || '')}">${vm.label}</span>
+      </div>
+      <div class="lr-bottom">
+        <span class="cat-dot" style="background:${n.is_root ? (catColor[n.category] || '#ccc') : TRANSITIVE_COLOR}"></span>
+        <span class="lr-cat">${n.is_root ? escapeHtml(n.category || '') : '传递依赖'}</span>
+        <span class="lr-deps">依赖 ${outDeg[n.name] || 0} · 被依赖 ${inDeg[n.name] || 0}</span>
+      </div>
+      ${n.lib && n.lib.description ? `<div class="lr-desc" title="${escapeHtml(n.lib.description)}">${escapeHtml(n.lib.description)}</div>` : ''}
+    `;
+    row.onclick = () => focusNode(n.name);
+    container.appendChild(row);
+    rowElByName[n.name] = row;
+  });
+
+  if (selectedNodeId) highlightListRow(selectedNodeId);
+}
+
+function highlightListRow(id) {
+  if (currentSelectedRow) currentSelectedRow.classList.remove('selected');
+  const row = rowElByName[id];
+  if (row) {
+    row.classList.add('selected');
+    row.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    currentSelectedRow = row;
+  } else {
+    currentSelectedRow = null;
+  }
+}
+
+function focusNode(id) {
+  network.selectNodes([id]);
+  network.focus(id, { scale: 1.3, animation: { duration: 400 } });
+  showDetail(id);
+}
+
+function showDetail(id) {
+  const n = allNodes.find(x => x.name === id);
+  if (!n) return;
+  selectedNodeId = id;
+  highlightListRow(id);
+
+  const outgoing = allEdges.filter(e => e.from === id).map(e => e.to);
+  const incoming = allEdges.filter(e => e.to === id).map(e => e.from);
+
+  const tagList = (arr) => arr.length
+    ? arr.map(x => `<span class="tag" onclick="focusNode('${x.replace(/'/g, "\\'")}')">${escapeHtml(x)}</span>`).join('')
+    : '<span class="empty">无</span>';
+
+  const p = n.platform;
+  let platformHtml = '<div class="empty">无平台分析数据</div>';
+  if (p) {
+    const verdict = verdictOf(n);
+    const vm = VERDICT_META[verdict];
+    const flagsHtml = (p.flags || []).length
+      ? p.flags.map(f => `<span class="vbadge" style="background:${(VERDICT_META[f] || vm).color}">${(VERDICT_META[f] || { label: f }).label}</span>`).join('')
+      : '<span class="empty">无</span>';
+    const reasonsHtml = (p.reasons || []).length
+      ? '<ul class="reasons">' + p.reasons.map(r => `<li>${escapeHtml(r)}</li>`).join('') + '</ul>'
+      : '<span class="empty">无</span>';
+
+    const evid = [];
+    if (p.tier1) {
+      if (p.tier1.os_classifiers && p.tier1.os_classifiers.length) evid.push('OS 分类器: ' + p.tier1.os_classifiers.join(', '));
+      if (p.tier1.latest_wheel_platforms && p.tier1.latest_wheel_platforms.length) evid.push('Wheel 平台: ' + p.tier1.latest_wheel_platforms.join(', '));
+    }
+    if (p.tier2) {
+      if (p.tier2.bundled_binary_file_count) evid.push('内置二进制文件: ' + p.tier2.bundled_binary_file_count + ' 个');
+      if (p.tier2.native_build_files && p.tier2.native_build_files.length) evid.push('原生构建文件: ' + p.tier2.native_build_files.length + ' 个');
+      if (p.tier2.cython_source_file_count) evid.push('Cython 源文件: ' + p.tier2.cython_source_file_count + ' 个');
+    }
+
+    platformHtml = `
+      <div class="row"><span class="k">平台结论：</span><span class="vbadge" style="background:${vm.color}">${vm.label}</span></div>
+      <div class="row"><span class="k">标记：</span>${flagsHtml}</div>
+      ${evid.length ? `<div class="row evid"><span class="k">证据：</span>${escapeHtml(evid.join(' · '))}</div>` : ''}
+      <div class="deplist"><span class="k">原因：</span>${reasonsHtml}</div>
+    `;
+  }
+
+  const lib = n.lib;
+  const descHtml = lib && lib.description ? `<div class="desc">${escapeHtml(lib.description)}</div>` : '';
+  const noteHtml = lib && lib.note ? `<div class="note">⚠ ${escapeHtml(lib.note)}</div>` : '';
+  const linksParts = [];
+  if (lib && lib.source) linksParts.push(`<a href="${escapeHtml(lib.source)}" target="_blank" rel="noopener">源码仓库 ↗</a>`);
+  if (lib && lib.pypi) linksParts.push(`<a href="${escapeHtml(lib.pypi)}" target="_blank" rel="noopener">PyPI 页面 ↗</a>`);
+  const linksHtml = linksParts.length ? `<div class="row links">${linksParts.join('')}</div>` : '';
+
+  document.getElementById('detail').innerHTML = `
+    <div class="name">${escapeHtml(n.name)}</div>
+    <div class="row"><span class="k">版本：</span>${escapeHtml(n.version || '未知')}</div>
+    <div class="row"><span class="k">类型：</span>${n.is_root ? '清单根库' : '传递依赖'}</div>
+    <div class="row"><span class="k">分类：</span>${escapeHtml(n.category || '（无，属传递依赖）')}</div>
+    <div class="row"><span class="k">解析状态：</span>${n.resolved === false ? '⚠ 未在 PyPI 找到' : '正常'}</div>
+    ${descHtml}
+    ${noteHtml}
+    ${linksHtml}
+    <hr>
+    ${platformHtml}
+    <hr>
+    <div class="deplist"><span class="k">直接依赖于 (${outgoing.length})：</span><br>${tagList(outgoing)}</div>
+    <div class="deplist"><span class="k">被以下库依赖 (${incoming.length})：</span><br>${tagList(incoming)}</div>
+  `;
+}
+</script>
+</body>
+</html>
